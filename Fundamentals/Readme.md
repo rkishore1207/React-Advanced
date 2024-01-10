@@ -15,3 +15,8 @@
 -----
 * To make this work, in the settings type **default formatter** and select `prettier`.
 * Type **eslint run** and select `onSave`. 
+## Creating new react app
+* `npx create-react-app` is the old command to create new react app and it doesn't have updated packages.
+* So, we go for `vite` it would include all the updated packages and ask the recommandation for some of the extensions such as ESlint, prettier, etc.
+* And also HMR and bundling process are also fast when compared with the old command procedure.
+* Hence, it recommanded to use **VITE** for real time application and **create-react-app** for tutorials or learnings.
