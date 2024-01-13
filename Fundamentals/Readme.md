@@ -20,3 +20,33 @@
 * So, we go for `vite` it would include all the updated packages and ask the recommandation for some of the extensions such as ESlint, prettier, etc.
 * And also HMR and bundling process are also fast when compared with the old command procedure.
 * Hence, it recommanded to use **VITE** for real time application and **create-react-app** for tutorials or learnings.
+
+## Javascripts
+* During destructuring we could give different variables for elements in the array, but i want to get only first two elements and rest elements are i want as array itself.
+* Then in this case **REST OPERATOR** came into picture, it will occupy all the remaining elements into one array.
+```javascript
+const array = [1,2,3,4,5];
+let [firstValue,secondValue,...remainingValues] = array;
+
+//output is => 1 2 [ 3, 4, 5 ]
+```
+* **Spread Operator** is used to hold the previous value and assign the new value without losing the existed value.
+```javascript
+const array = [1,2,3,4,5];
+const newArray = [...array,6];
+```
+* We can update existing property in a object as well as we can add new property to it by `spread operator`.
+```javascript
+const object = {
+    uid:'0000000',
+    name:'Kishore',
+    age:21
+}
+
+const newObject = {
+    ...object,
+    //adding new property
+    phone:'8940804555',
+    //updating existing property
+    age:22};
+```
