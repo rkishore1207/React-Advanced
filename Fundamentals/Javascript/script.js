@@ -18,3 +18,9 @@ const object = {
 const newObject = {...object,phone:'8940804555',age:22};
 console.log(newObject);
 
+//To get year from date datatype
+const getYear = (date) => date.split(" ")[3];
+
+
+console.log(getYear(new Date().toDateString()));
+

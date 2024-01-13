@@ -50,3 +50,30 @@ const newObject = {
     //updating existing property
     age:22};
 ```
+
+### Arrow function and Short Circuit (&&,||,??)
+* In arrow function, if body of the function is one line then **no need to type return keyword**, it will automatically return it.
+* But if more than one line, **we should explicitly specify the return** statement or else it will throw error.
+* Don't use arrow function for all functions, if the function has one line implementation then use arrow function.
+```javascript
+//To get year from date datatype
+const getYear = (date) => date.split(" ")[3];
+console.log(getYear(new Date().toDateString()));
+```
+#### Logical And
+- All the short circuits took **two operands and one operator**.
+- falsy values are `0,'',null,undefined,false`.
+```javascript
+true && "String" // string
+false && "String" //false
+```
+#### Logical Or
+```javascript
+true || "String" // false
+false || "String" //string
+```
+#### Null collasing
+```javascript
+null ?? "String" // string
+true ?? "String" //true
+```
