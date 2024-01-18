@@ -77,3 +77,24 @@ false || "String" //string
 null ?? "String" // string
 true ?? "String" //true
 ```
+### Optional Chaining
+* If we want to access one object's property but if it's not exist, code will throw error.
+* To handle this use Optional chaining.
+```javascript
+const getTotal = () => object.age + object?.phone || 0;
+console.log(getTotal()); //age value only (21)
+```
+
+### Javascript Functions
+* We could use **object and array** as starter in `reduce` method not only the integer.
+* Unlike sort all the functions return or produce new array but sort only directly modify the original array.
+* We don't have to focus on how *a-b* will work, if we use that it will sort the array.
+```javascript
+const array = [3,7,4,2,9];
+const sortedArrayAsc = array.sort((a,b)=>a-b);//ascending
+const sortedArrayDesc = array.sort((a,b)=>b-a);// descending
+// In the above way will change the original array
+const newArray = array.slice().sort((a,b)=>a-b);
+// we can also able to sort the object list.
+```
+* In javascript, arrays are immutable so if we want to add, delete, or update we could do that in the new array.
