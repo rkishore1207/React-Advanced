@@ -20,3 +20,81 @@
 * So, we go for `vite` it would include all the updated packages and ask the recommandation for some of the extensions such as ESlint, prettier, etc.
 * And also HMR and bundling process are also fast when compared with the old command procedure.
 * Hence, it recommanded to use **VITE** for real time application and **create-react-app** for tutorials or learnings.
+
+## Javascripts
+* During destructuring we could give different variables for elements in the array, but i want to get only first two elements and rest elements are i want as array itself.
+* Then in this case **REST OPERATOR** came into picture, it will occupy all the remaining elements into one array.
+```javascript
+const array = [1,2,3,4,5];
+let [firstValue,secondValue,...remainingValues] = array;
+
+//output is => 1 2 [ 3, 4, 5 ]
+```
+* **Spread Operator** is used to hold the previous value and assign the new value without losing the existed value.
+```javascript
+const array = [1,2,3,4,5];
+const newArray = [...array,6];
+```
+* We can update existing property in a object as well as we can add new property to it by `spread operator`.
+```javascript
+const object = {
+    uid:'0000000',
+    name:'Kishore',
+    age:21
+}
+
+const newObject = {
+    ...object,
+    //adding new property
+    phone:'8940804555',
+    //updating existing property
+    age:22};
+```
+
+### Arrow function and Short Circuit (&&,||,??)
+* In arrow function, if body of the function is one line then **no need to type return keyword**, it will automatically return it.
+* But if more than one line, **we should explicitly specify the return** statement or else it will throw error.
+* Don't use arrow function for all functions, if the function has one line implementation then use arrow function.
+```javascript
+//To get year from date datatype
+const getYear = (date) => date.split(" ")[3];
+console.log(getYear(new Date().toDateString()));
+```
+#### Logical And
+- All the short circuits took **two operands and one operator**.
+- falsy values are `0,'',null,undefined,false`.
+```javascript
+true && "String" // string
+false && "String" //false
+```
+#### Logical Or
+```javascript
+true || "String" // false
+false || "String" //string
+```
+#### Null collasing
+```javascript
+null ?? "String" // string
+true ?? "String" //true
+```
+### Optional Chaining
+* If we want to access one object's property but if it's not exist, code will throw error.
+* To handle this use Optional chaining.
+```javascript
+const getTotal = () => object.age + object?.phone || 0;
+console.log(getTotal()); //age value only (21)
+```
+
+### Javascript Functions
+* We could use **object and array** as starter in `reduce` method not only the integer.
+* Unlike sort all the functions return or produce new array but sort only directly modify the original array.
+* We don't have to focus on how *a-b* will work, if we use that it will sort the array.
+```javascript
+const array = [3,7,4,2,9];
+const sortedArrayAsc = array.sort((a,b)=>a-b);//ascending
+const sortedArrayDesc = array.sort((a,b)=>b-a);// descending
+// In the above way will change the original array
+const newArray = array.slice().sort((a,b)=>a-b);
+// we can also able to sort the object list.
+```
+* In javascript, arrays are immutable so if we want to add, delete, or update we could do that in the new array.
