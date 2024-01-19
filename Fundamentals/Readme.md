@@ -104,3 +104,9 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
 .then((response) => response.json())
 .then((data) => console.log(data)); 
 ```
+
+## React-Component
+* First we need to learn how to split the web page as **components**, we need to visualize web page as components.
+* We would also place the images or assets in the `public` folder because **webpack (Module Bundler)** always looks images automatically in the public folder in react.
+* Automatically VS code connect our code to the git hub repo and it will notify the changes by lines.
+* We can get rid of this by -> settings -> type Diff decorations -> change all to none.
