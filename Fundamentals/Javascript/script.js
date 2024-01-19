@@ -64,3 +64,18 @@ const booksAfterUpdate = booksAfterAdd.map((book)=>{
 
 console.log(booksAfterUpdate);
 
+//Asynchronous
+fetch('https://jsonplaceholder.typicode.com/todos/5')
+.then((response) => response.json())
+.then((data) => console.log(data));
+
+// best way for asynchronous
+async function getTodos() {
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos/4');
+    const data = await response.json();
+    console.log(data);
+    return data;
+}
+
+console.log(getTodos()); // it will always print promise<pending>
+console.log("kishore");

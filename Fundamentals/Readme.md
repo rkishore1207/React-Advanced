@@ -98,3 +98,9 @@ const newArray = array.slice().sort((a,b)=>a-b);
 // we can also able to sort the object list.
 ```
 * In javascript, arrays are immutable so if we want to add, delete, or update we could do that in the new array.
+### Asynchronous 
+```javascript
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+.then((response) => response.json())
+.then((data) => console.log(data)); 
+```
