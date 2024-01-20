@@ -98,3 +98,22 @@ const newArray = array.slice().sort((a,b)=>a-b);
 // we can also able to sort the object list.
 ```
 * In javascript, arrays are immutable so if we want to add, delete, or update we could do that in the new array.
+### Asynchronous 
+```javascript
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+.then((response) => response.json())
+.then((data) => console.log(data)); 
+```
+
+## React-Component
+* First we need to learn how to split the web page as **components**, we need to visualize web page as components.
+* We would also place the images or assets in the `public` folder because **webpack (Module Bundler)** always looks images automatically in the public folder in react.
+* Automatically VS code connect our code to the git hub repo and it will notify the changes by lines.
+* We can get rid of this by -> settings -> type Diff decorations -> change all to none.
+* Browser will only understand html and javascript, hence in the background our react code is converted into nested javascript format by `BABEL` tool.
+
+### Javascript vs React
+* In the traditional way **One Technology per file** that is html, Css, javascript are all in three sparated files.
+* Data and logics (html,javascripts) are **tightly coupled**.
+* But it is very hard to dump everything in one file hence React come up with **One component per file**.
+* One component have `Data, Logics and Appearance`.
