@@ -48,15 +48,48 @@ const App = () => {
 
     return(
         <div>
-            <h1>Hello world!!</h1>
-            <Pizza/>
-            <Pizza/>
-            <Pizza/>
+            <Header/>
+            <Menu/>
+            <Footer/>
         </div>
     )
 }
 
 export default App;
+
+const Header = () => {
+  return(
+    <div>
+      <h1>Fast React Pizza Co.</h1>
+    </div>
+  )
+}
+
+const Menu = () => {
+  return(
+    <div>
+      <Pizza/>
+      <Pizza/>
+      <Pizza/>
+      <Pizza/>
+    </div>
+  )
+}
+
+const Footer = () => {
+
+  const currentTime = new Date().getHours();
+  const openHour = 10;
+  const closeHour = 22;
+  const isOpen = currentTime >= openHour && currentTime <= closeHour;
+  console.log(isOpen);
+
+  return(
+    <div>
+      <footer> {new Date().toLocaleTimeString()} We are currently Open</footer>
+    </div>
+  )
+}
 
 const Pizza = () => {
     return(
