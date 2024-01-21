@@ -70,30 +70,35 @@ const Menu = () => {
 
   return(
     <div className = 'menu'>
-      <ul className='pizzas'>
+      <h2>Our Menu</h2>
+
         {
           pizzaData.length > 0 && 
-          pizzaData.map((pizza,index)=>{
-            return(
-              <Pizza pizzaObj = {pizza} key={index}/>
-              )
-            })
+          <>
+            <p>These are all our bestsellers pizza's which was liked by most of our clients. We guaranteed to you that it will give you satisfaction.</p>\
+            <ul className='pizzas'>
+              {
+                pizzaData.map((pizza,index) => 
+                      <Pizza pizzaObj = {pizza} key={index}/>
+                  )
+              }
+            </ul>
+          </>
         }
-      </ul>
     </div>
   )
 }
 
-const Pizza = (props) => {
+const Pizza = ({pizzaObj}) => {
 
-  if(props.pizzaObj.soldOut) return null;
+  if(pizzaObj.soldOut) return null;
 
   return(
       <li className = 'pizza'>
-        <h2>{props.pizzaObj.name}</h2>
-        <img src = {props.pizzaObj.photoName} alt = {props.pizzaObj.name}/>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{props.pizzaObj.price}</span>
+        <h2>{pizzaObj.name}</h2>
+        <img src = {pizzaObj.photoName} alt = {pizzaObj.name}/>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.price}</span>
       </li>
   )
 }
@@ -123,10 +128,10 @@ const Footer = () => {
   )
 }
 
-const Order = (props) => {
+const Order = ({closeHour}) => {
   return(
     <div className='order'>
-      <p>We are open till {props.closeHour} : 00</p>
+      <p>We are open till {closeHour} : 00</p>
       <div>
         <button className='btn'>Order</button>
       </div>
