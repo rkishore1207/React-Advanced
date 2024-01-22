@@ -117,3 +117,14 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
 * Data and logics (html,javascripts) are **tightly coupled**.
 * But it is very hard to dump everything in one file hence React come up with **One component per file**.
 * One component have `Data, Logics and Appearance`.
+
+## State Management
+* Each hooks return **array of length 2** and 0th index is the `value` and 1st index is the `function`.
+* Hence we need to destructure it and store it in the variables.
+* Manually updating the state variable is the **bad practice** because, in react everything is `immutable` so we should update the state by **setter function** only.
+```javascript
+const [test,setTest] = useState({name:"Kishore"});
+test.name = "Mathan"; //bad Practice
+setTest({name:"Mathan"}); // we should update the object' state like this only
+```
+* React `Reacts` the state changes by re-rendering the component UI.

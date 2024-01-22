@@ -91,14 +91,14 @@ const Menu = () => {
 
 const Pizza = ({pizzaObj}) => {
 
-  if(pizzaObj.soldOut) return null;
+  // if(pizzaObj.soldOut) return null;
 
   return(
-      <li className = 'pizza'>
+      <li className = {`pizza ${pizzaObj.soldOut ? 'sold-out' : ''}`}>
         <h2>{pizzaObj.name}</h2>
         <img src = {pizzaObj.photoName} alt = {pizzaObj.name}/>
         <p>{pizzaObj.ingredients}</p>
-        <span>{pizzaObj.price}</span>
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
       </li>
   )
 }
