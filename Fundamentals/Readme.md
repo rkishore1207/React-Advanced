@@ -131,3 +131,25 @@ setTest({name:"Mathan"}); // we should update the object' state like this only
 * If we want to pass one state to another component, but that component is **not the child** of this component.
 * This case we would use **Lifting up technique**.
 * We could write those props passing state in the **common parent** for both the siblings and pass the value as `props` to the respected component.
+
+## Derived State
+* If some variables depend upon the **already existed state** then we should prefer **Regular variables** not again the state variable.
+```javascript
+const[cart,setCart] = [
+    {id:1,name:"Watch",price:2000},
+    {id:2,name:"Shoe",price:750}
+];
+// bad practice because if cart values changes it makes three times rerendering
+const [totalCount,setTotalCount] = cart.length;
+const [totalPrice,setTotalPrice] = cart.reduce((acc,value)=>{
+    const updatedValue = acc + value.price;
+    return updatedValue;
+},0);
+
+// good practice -> using regular variables
+const totalCount = cart.length;
+const totalPrice = cart.reduce((acc,value)=>{
+    const updatedValue = acc + value.price;
+    return updatedValue;
+},0);
+```
