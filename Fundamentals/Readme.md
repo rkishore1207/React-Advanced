@@ -128,3 +128,6 @@ test.name = "Mathan"; //bad Practice
 setTest({name:"Mathan"}); // we should update the object' state like this only
 ```
 * React `Reacts` the state changes by re-rendering the component UI.
+* If we want to pass one state to another component, but that component is **not the child** of this component.
+* This case we would use **Lifting up technique**.
+* We could write those props passing state in the **common parent** for both the siblings and pass the value as `props` to the respected component.
