@@ -153,3 +153,18 @@ const totalPrice = cart.reduce((acc,value)=>{
     return updatedValue;
 },0);
 ```
+## Children Props
+* The children prop allow us to pass `JSX` into an element (besides regular props).
+* An Empty **hole** that can be filled by any *JSX the receives* as children.
+```javascript
+<Button bgColor={'black'}>
+    <span>Next</span><span>👉</span>
+</Button>
+
+//Component
+const Button = ({bgColor,children}) => {
+    <button style={{background:bgColor}}>
+        {children}
+    </button>
+}
+```
