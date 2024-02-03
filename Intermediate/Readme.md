@@ -16,3 +16,8 @@
 1. Stateless or Presentational components -> only have props and can be reusable
 2. Stateful components -> have both props and local states and can be reusable
 3. Structural components -> having other components and cannot be reusable
+
+## Components Composition
+* Instead of passing props into multiple components we can pass components as props (children) to other components.
+* because if one bottom most child component want any properties that comes from topmost parent, every component need to pass this props.
+* with component composition we could avoid this.
