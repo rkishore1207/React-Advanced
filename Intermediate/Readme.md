@@ -21,3 +21,9 @@
 * Instead of passing props into multiple components we can pass components as props (children) to other components.
 * because if one bottom most child component want any properties that comes from topmost parent, every component need to pass this props.
 * with component composition we could avoid this.
+
+## Creator and Consumer Mindset
+* While writing component we should have two mindsets **creator and consumer**.
+* Creator should think about how many porps does this component needs and what function it would return.
+* Consumer just think how we can use the props and create HTML structure for that.
+* We need to balace the low level and high level props.
