@@ -45,3 +45,6 @@
 * After everthing is updated in the `UI (Browser paint)`, this is not done by **React**.
 * React does not touch the DOM, it only renders. React can be used on different platforms (hosts).
 * Finally UI updation is done by **Renderers** (ReactDOM).
+
+## Diffing
+* Two Scenarios are Same Position and Different Elements and Same Position , same elements.
