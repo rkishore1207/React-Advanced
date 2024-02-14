@@ -27,3 +27,21 @@
 * Creator should think about how many porps does this component needs and what function it would return.
 * Consumer just think how we can use the props and create HTML structure for that.
 * We need to balace the low level and high level props.
+
+## Components , Instances and Elements
+* We wrote set of code for particular purpose separately called components
+* While we call that component inside another component, that place we call Component Instance <Header/>
+* React elements are called Elements , eg:-> <div>,<p>
+
+## How React works Internally
+-- `RENDER PHASE`
+* Triggering is happen by initial rendering or state change.(already our react application have component tree).
+* before changing the updates in the UI, react creates **React Element Tree** that is **Virtual DOM**.
+* At UI React showing one tree called **Fiber Tree**. This was created **only once** that is during `initial rendering`, after while it just update the **changing components only**.
+* Once if any `updates` are occur in **component tree**, its parallel change is occuring in the `virtual DOM` also but with all the child components also, this depth is going till **bottom most child**.
+* Then that new virtual DOM is Reconciled by Reconciler (Fiber) and happening Diffing.
+-- `COMMIT PHASE`
+* If any components added in the VDOM, respected component will add in the **Fiber tree** also, same thing for delete and update also.
+* After everthing is updated in the `UI (Browser paint)`, this is not done by **React**.
+* React does not touch the DOM, it only renders. React can be used on different platforms (hosts).
+* Finally UI updation is done by **Renderers** (ReactDOM).
