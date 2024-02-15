@@ -48,3 +48,7 @@
 
 ## Diffing
 * Two Scenarios are Same Position and Different Elements and Same Position , same elements.
+* If the same Component are in the same position in **DOM tree**, state will be `preserved`.
+* If two components are in the 1st and 2nd position of DOM and have some state, if another component will be added in top of that, then those component will goes into 2nd and 3rd position. Hence theirs state also will get lost.
+* So to achieve this we can use `Key prop`.
+* Because of key prop those position will change but that `reference` won't get change, hence state will be **preseved**.
