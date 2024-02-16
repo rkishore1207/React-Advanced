@@ -52,3 +52,11 @@
 * If two components are in the 1st and 2nd position of DOM and have some state, if another component will be added in top of that, then those component will goes into 2nd and 3rd position. Hence theirs state also will get lost.
 * So to achieve this we can use `Key prop`.
 * Because of key prop those position will change but that `reference` won't get change, hence state will be **preseved**.
+
+## Power of Key Props
+* For every unique render if we want to change or preserve the state of component we could use `Key prop` to it, because if the key value change it will make it as a `new component instance`.
+
+## Rendering Logics
+* During the component rendering, **state declaration and HTML code** will render at first, after then if we click the event handler functions it will trigger the respected method.
+* When the function communicates to the outside of the function or it will change something at outside of the function it called as `Side Effects`.
+* **Pure Function** -> one function doesn't communicate to outside of the world and whenever given same input it will give the same output.
