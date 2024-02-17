@@ -67,3 +67,10 @@
 * Do not **start timers**.
 * Do not update props, if it done it would create **infinite loop**.
 * We could use Side effects for Top level elements by **useEffects**.
+
+## Batch Update
+* If one function doing **multiple useState update**, then react won't render that much times.
+* Instead it will Batch up all the updates and just render **single time only (Render + Commit)**. -> To enhance performance.
+* In React 18+ versions -> during eventListener, setTimeOut, promise like all the cases, rendering is happening by Batching manner.
+* But before React 18, except **eventHandlerFunctions** all other methods won't use Batching, hence if we want to achieve batching we would use **ReactDOM.flushSync()** -> but it couldn't needed now. 
+* `Always remember to use CallBack function to update State`.
