@@ -60,3 +60,10 @@
 * During the component rendering, **state declaration and HTML code** will render at first, after then if we click the event handler functions it will trigger the respected method.
 * When the function communicates to the outside of the function or it will change something at outside of the function it called as `Side Effects`.
 * **Pure Function** -> one function doesn't communicate to outside of the world and whenever given same input it will give the same output.
+
+## Rules for Render Logic
+* Components should be **Pure**, because whenever we give same input props it will give same output.
+* Render Logics do not perform **API calls**.
+* Do not **start timers**.
+* Do not update props, if it done it would create **infinite loop**.
+* We could use Side effects for Top level elements by **useEffects**.
