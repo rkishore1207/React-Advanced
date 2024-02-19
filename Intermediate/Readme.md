@@ -74,3 +74,9 @@
 * In React 18+ versions -> during eventListener, setTimeOut, promise like all the cases, rendering is happening by Batching manner.
 * But before React 18, except **eventHandlerFunctions** all other methods won't use Batching, hence if we want to achieve batching we would use **ReactDOM.flushSync()** -> but it couldn't needed now. 
 * `Always remember to use CallBack function to update State`.
+
+## CleanUp function
+* This is a return function which executes after the `components unmount` or after the second execution to clear its `previous value`.
+* It is helpful while **http requests** continuosly hitting, to break its connection we would use CleanUp functions.
+* If one request to any **API and to disconnect** from then, achieve by Clean Up functions.
+* There is one javascript concept is there called `Disclosures`, which means all the javascript functions `remember its state value even if it is unmounted`.
