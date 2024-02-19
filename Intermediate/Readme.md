@@ -80,3 +80,13 @@
 * It is helpful while **http requests** continuosly hitting, to break its connection we would use CleanUp functions.
 * If one request to any **API and to disconnect** from then, achieve by Clean Up functions.
 * There is one javascript concept is there called `Disclosures`, which means all the javascript functions `remember its state value even if it is unmounted`.
+
+## Abort API Calls
+* If our request to api is so frequent that is **one after another** we should `abort` all the previous calls, we could took only the last request.
+```javascript
+const controller = new AbortController();
+// Pass one payload as {signal: controller.signal} to the api request
+return function(){ // at clean up
+    controller.abort();
+}
+```
