@@ -90,3 +90,26 @@ return function(){ // at clean up
     controller.abort();
 }
 ```
+
+## React Hooks
+* It is a special build in function which is used to **hook** the react internals.
+* We have states and some sideEffects in our components, with the help of hook we could that.
+### React Rules
+* We should use Hooks only at `top level` and `functional components` only.
+* Not in the **Conditionals, loops, or functions**.
+* And react hooks should be present in the `same order`.
+
+```javascript
+const [hook1,setHook1] = useState(22);
+if(hook1 === 22)
+    const [hook2,setHook2] = useState("Kishore");
+useEffect(()=>{
+    console.log("Learning hooks deeply");
+})
+```
+-------------------------------------
+- Why we said hooks should not be used in the conditionls,loops or functions, because
+- Internally react hooks are structured like `Linked List` manner.
+- In the above case [hook1]<->[hook2]<->[useEffect]; -> this is how it will form struncture at initial render.
+- Then if the condition fails [hook2] won't be available, then connection to useEffect will also lost.
+- Hence Hooks should be used in **top level** and it **order should not be changed**.
