@@ -113,3 +113,10 @@ useEffect(()=>{
 - In the above case [hook1]<->[hook2]<->[useEffect]; -> this is how it will form struncture at initial render.
 - Then if the condition fails [hook2] won't be available, then connection to useEffect will also lost.
 - Hence Hooks should be used in **top level** and it **order should not be changed**.
+
+## Lazy Evaluation
+* There is one way to initialize useState is by `CallBack funtion`.
+* This also could execute while **initial render** of the component.
+```javascript
+const[userId,setUserID] = useState<number>(()=>Number(localStorage.getItem("userId")));
+```
