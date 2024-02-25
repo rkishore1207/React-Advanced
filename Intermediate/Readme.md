@@ -120,3 +120,7 @@ useEffect(()=>{
 ```javascript
 const[userId,setUserID] = useState<number>(()=>Number(localStorage.getItem("userId")));
 ```
+## useRef
+* It is one of the state which is used for `store data persistent` for all renders.
+* And then Select and Store DOM Elements.
+* We could not use Ref's value in the **JSX** and should not read or write in the **render logic**.
