@@ -124,3 +124,9 @@ const[userId,setUserID] = useState<number>(()=>Number(localStorage.getItem("user
 * It is one of the state which is used for `store data persistent` for all renders.
 * And then Select and Store DOM Elements.
 * We could not use Ref's value in the **JSX** and should not read or write in the **render logic**.
+
+## Custom Hook
+* If we want to reuse any **function that has states** we could use Custom Hook.
+* That is Custom Hooks have **useStates and useEffects** and it can receive **parameters** and able to return **values** as well.
+* Custom Hook functions name should start with `use` keyword.
+* One custom hook is for **One purpose only**, to make it reusable and portable.
