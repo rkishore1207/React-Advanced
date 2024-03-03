@@ -142,3 +142,10 @@ const[userId,setUserID] = useState<number>(()=>Number(localStorage.getItem("user
                     2. useEffect instead of lot of 
                         lifecycle
                     3. no **this** keyword
+
+### Class components
+* Once we define functions and if we use that it would said it's `undefined`.
+* So to overcome this, we need to `bind` the event handlers because while we binding it would create the **instance** for the current component, after this only we could consume the **event handlers**.
+* **Render()** method is come from **React.Component()**.
+* This binding is only for event handlers, not the inline functions (**this.setState()**).
+* Also this binding is applicable for **regular functions** not **function expression** (arrow function).
