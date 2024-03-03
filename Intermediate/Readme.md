@@ -90,3 +90,62 @@ return function(){ // at clean up
     controller.abort();
 }
 ```
+
+## React Hooks
+* It is a special build in function which is used to **hook** the react internals.
+* We have states and some sideEffects in our components, with the help of hook we could that.
+### React Rules
+* We should use Hooks only at `top level` and `functional components` only.
+* Not in the **Conditionals, loops, or functions**.
+* And react hooks should be present in the `same order`.
+
+```javascript
+const [hook1,setHook1] = useState(22);
+if(hook1 === 22)
+    const [hook2,setHook2] = useState("Kishore");
+useEffect(()=>{
+    console.log("Learning hooks deeply");
+})
+```
+-------------------------------------
+- Why we said hooks should not be used in the conditionls,loops or functions, because
+- Internally react hooks are structured like `Linked List` manner.
+- In the above case [hook1]<->[hook2]<->[useEffect]; -> this is how it will form struncture at initial render.
+- Then if the condition fails [hook2] won't be available, then connection to useEffect will also lost.
+- Hence Hooks should be used in **top level** and it **order should not be changed**.
+
+## Lazy Evaluation
+* There is one way to initialize useState is by `CallBack funtion`.
+* This also could execute while **initial render** of the component.
+```javascript
+const[userId,setUserID] = useState<number>(()=>Number(localStorage.getItem("userId")));
+```
+## useRef
+* It is one of the state which is used for `store data persistent` for all renders.
+* And then Select and Store DOM Elements.
+* We could not use Ref's value in the **JSX** and should not read or write in the **render logic**.
+
+## Custom Hook
+* If we want to reuse any **function that has states** we could use Custom Hook.
+* That is Custom Hooks have **useStates and useEffects** and it can receive **parameters** and able to return **values** as well.
+* Custom Hook functions name should start with `use` keyword.
+* One custom hook is for **One purpose only**, to make it reusable and portable.
+
+## Funtional Vs Class component
+- How to Create     Javascript function with any type       Extending React.Component
+- Reading Props     Destructuring props or props.x          this.props.x
+- local state       useState() hook                         this.setState()
+- sideEffects       useEffect() hook                        LifeCycle methods
+- Event handlers    Functions                               Class methods
+- Returning         JSX from functions                      JSX from Render() method
+- Advantages        1. less boiler plates                   1. Easier to understand of lifecycle
+                    2. useEffect instead of lot of 
+                        lifecycle
+                    3. no **this** keyword
+
+### Class components
+* Once we define functions and if we use that it would said it's `undefined`.
+* So to overcome this, we need to `bind` the event handlers because while we binding it would create the **instance** for the current component, after this only we could consume the **event handlers**.
+* **Render()** method is come from **React.Component()**.
+* This binding is only for event handlers, not the inline functions (**this.setState()**).
+* Also this binding is applicable for **regular functions** not **function expression** (arrow function).
