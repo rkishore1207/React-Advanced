@@ -130,3 +130,15 @@ const[userId,setUserID] = useState<number>(()=>Number(localStorage.getItem("user
 * That is Custom Hooks have **useStates and useEffects** and it can receive **parameters** and able to return **values** as well.
 * Custom Hook functions name should start with `use` keyword.
 * One custom hook is for **One purpose only**, to make it reusable and portable.
+
+## Funtional Vs Class component
+- How to Create     Javascript function with any type       Extending React.Component
+- Reading Props     Destructuring props or props.x          this.props.x
+- local state       useState() hook                         this.setState()
+- sideEffects       useEffect() hook                        LifeCycle methods
+- Event handlers    Functions                               Class methods
+- Returning         JSX from functions                      JSX from Render() method
+- Advantages        1. less boiler plates                   1. Easier to understand of lifecycle
+                    2. useEffect instead of lot of 
+                        lifecycle
+                    3. no **this** keyword
