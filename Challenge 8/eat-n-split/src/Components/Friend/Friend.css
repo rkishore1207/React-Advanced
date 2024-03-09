@@ -1,0 +1,30 @@
+.each-friend{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    width: 100%;
+    padding:0.5rem;
+    gap:1rem;
+    background-color: rgb(243, 209, 209);
+    margin-bottom:3%;
+}
+
+.profile-image-container{
+    width: 60px;
+    height:60px;
+}
+
+.profile-image-container>img {
+    width: 100%;
+    height:100%;
+    border-radius: 50%;
+}
+
+.select-button{
+    border: none;
+    background-color: rgb(159, 159, 234);
+    padding:0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
