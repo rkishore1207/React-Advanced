@@ -1,0 +1,8 @@
+.logo-container{
+    padding:40px;
+    background-color: bisque;
+    font-family: cursive;
+    border-radius: 10px 10px 0px 0px;
+    text-align: center;
+    text-transform: uppercase;
+}

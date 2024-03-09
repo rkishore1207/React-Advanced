@@ -1,0 +1,30 @@
+.item-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+    padding: 10px;
+    /* border: 1kpx solid black; */
+    margin: 0 10px;
+    font-size: 1.2rem;
+}
+
+.item-checked{
+    text-decoration:line-through;
+}
+
+.item-name{
+    width:100%;
+    white-space: nowrap;
+}
+
+.item-cancel{
+    font-size: larger;
+    cursor: pointer;
+    color: red;
+    font-weight: 900;
+}
+
+.item-cancel :hover{
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}

@@ -1,0 +1,24 @@
+.App{
+    background-color: rgb(222, 194, 194);
+    border-radius: 0.5rem;
+    width: 80%;
+    margin:10% auto;
+    padding:1rem;
+    text-align: center;
+}
+
+*{
+    padding:0;
+    margin:0;
+}
+
+#currency-input,.currency-dropdown{
+    padding:0.25rem;
+    border-radius: 0.25rem;
+    outline: none;
+    border: none;
+    width: 20%;
+    margin:20px 10px 20px 0;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background-color: rgba(228, 219, 219, 0.989);
+}

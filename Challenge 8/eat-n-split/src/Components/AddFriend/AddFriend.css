@@ -1,0 +1,55 @@
+.add-friend-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(159, 159, 234);
+    padding:2rem;
+    gap:1.5rem;
+    font-size: 1.5rem;
+    color:black;
+    border-radius: 0.5rem;
+    margin-bottom: 3%;
+}
+
+.friend-name-tile,.friend-profile-tile{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-generation-container > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border:2px solid white;
+}
+
+.friend-icon{
+    font-size: 2rem;
+    font-weight: bolder;
+    color: black;
+}
+
+.friend-icon:hover{
+    cursor: pointer;
+    color: rgb(103, 99, 99);
+}
+
+.friend-icon:active{
+    color:black;
+}
+
+.add-friend-container input{
+    border:none;
+    outline:none;
+    padding:0.5rem;
+    border-radius: 0.25rem;
+}
+
+.add-friend-container input:focus{
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}

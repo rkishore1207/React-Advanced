@@ -1,0 +1,56 @@
+.bill-split-container{
+    display: flex;
+    background-color: rgba(241, 192, 102, 0.856);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    width: 100%;
+    gap: 0.5rem;
+    border-radius: 1rem;
+}
+
+.bill-split-item{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.bill-split-container input,.bill-split-container select{
+    width: 80%;
+    margin: auto;
+    display: inline-block;
+    border:none;
+    outline: none;
+    border-radius: 0.25rem;
+    padding:0.5rem 0.75rem;
+    background-color: rgb(243, 219, 173);
+}
+
+.bill-split-container input:focus,.bill-split-container select:focus{
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+
+.left-bill-item{
+    flex:1;
+}
+
+.right-bill-item{
+    flex:1;
+    width: 100%;
+}
+
+.bill-split-title{
+    margin:0 auto 3%;
+}
+
+.split-button{
+    border: none;
+    outline: none;
+    padding:7px 15px;
+    background-color: orange;
+    margin: 3% auto 0;
+    border-radius: 0.5rem;
+}

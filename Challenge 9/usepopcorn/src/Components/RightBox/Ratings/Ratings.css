@@ -1,0 +1,25 @@
+.active{
+    color: rgb(242, 226, 5);
+}
+
+.ratings-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    width: 100%;
+}
+
+.ratings{
+    text-wrap: nowrap;
+    margin-right:35px;
+}
+
+.ratings > span{
+    padding-right: 2%;
+}
+
+.star{
+    color: rgb(242, 226, 5);
+}
