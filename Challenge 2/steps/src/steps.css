@@ -1,0 +1,71 @@
+.steps-body{
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 20px;
+    width:50%;
+    margin: auto;
+}
+
+.progress-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.progress-container div {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.messages{
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.messages > span{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 500;
+}
+
+.buttons-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20%;
+}
+
+.buttons-container button {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 15px;
+    font-size: 1rem;
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    font-weight: 500;
+}
+
+.active{
+    background-color: rgba(34, 34, 241, 0.836);
+    cursor: pointer;
+}
+
+.button-inactive{
+    background-color: lightgray;
+    cursor: not-allowed;
+    color: black !important;
+}
+
+.close-button{
+    width: 75%;
+    text-align: end;
+    margin-top: 10%;
+    cursor: pointer;
+    font-size: 2rem;
+}
