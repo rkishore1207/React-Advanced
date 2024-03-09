@@ -1,0 +1,53 @@
+.form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:1%;
+    background-color: #CD8D7A;
+    padding:25px;
+}
+
+.quantities{
+    max-height: 50px;
+}
+
+.form-container select{
+    padding: 5px;
+    border-radius: 5px;
+    border:none;
+    cursor: pointer;
+    outline: none;
+}
+
+.form-container input{
+    padding: 5px;
+    border-radius: 5px;
+    border:none;
+    width: 12%;
+    outline: none;
+}
+
+.form-container input :hover{
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+
+
+.form-container button{
+    padding:5px 15px;
+    border:none;
+    border-radius: 5px;
+}
+
+.form-container button:hover{
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+    cursor: pointer;
+}
+
+.disable{
+    background-color: lightgray;
+}
+
+.enable{
+    background-color: #FFC5C5;
+    color:blue;
+}
