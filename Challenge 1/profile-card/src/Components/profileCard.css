@@ -1,0 +1,43 @@
+.skill-container {
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.skill-container > span {
+    flex: 1;
+    color: white;
+    font-weight: 900;
+    -webkit-text-stroke: 0.5px black;
+}
+
+.skills{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:8px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.profile-card-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 25%;
+    border: 2px solid black;
+    margin: 20px;
+}
+
+.avatar-container{
+    height: 200px;
+}
+
+.avatar-container > img{
+    height: 100%;
+    width: 100%;
+}
+
+.title-container{
+    text-align: left;
+    padding: 10px 20px 0;
+}
