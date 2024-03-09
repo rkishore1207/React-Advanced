@@ -1,0 +1,18 @@
+.movies-names{
+    height: inherit;
+    overflow: auto;
+    padding:1rem;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.733);
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #adc1eb;
+  }

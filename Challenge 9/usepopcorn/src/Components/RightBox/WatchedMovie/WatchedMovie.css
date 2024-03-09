@@ -1,0 +1,50 @@
+.watched-movie-container{
+    display: flex;
+    font-size: 1.5rem;
+    width: 100%;
+    border-bottom: 1px solid #394867;
+    padding: 1rem;
+}
+
+.watched-movie-poster{
+    height:90px;
+    width: 80px;
+}
+
+.watched-movie-poster > img {
+    height: 100%;
+    width:100%;
+    border-radius: 5px;
+}
+
+.all-details{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    gap:1rem;
+}
+
+.watched-movie-title{
+    padding: 1rem 0 0 1rem;
+}
+
+.movie-inner-container{
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+    width: 100%;
+}
+
+.watched-movie-cancel{
+    padding:0.3rem;
+    border-radius: 50%;
+    background-color: red;
+    border:none;
+    outline: none;
+    font-size: 1.5rem;
+}
+
+.watched-movie-cancel:hover{
+    background-color: rgba(237, 50, 50, 0.904);
+    cursor: pointer;
+}

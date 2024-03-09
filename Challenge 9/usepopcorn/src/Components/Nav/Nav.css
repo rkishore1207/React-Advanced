@@ -1,0 +1,48 @@
+.navbar-container{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    padding:1rem;
+    align-items: center;
+    background-color: #6741d9;
+    border-radius: 5px;
+}
+
+
+.logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    grid-column: 1/2;
+    flex-wrap: wrap;
+}
+
+.logo-container > span{
+    font-size: 2rem;
+}
+
+.search-container{
+    grid-column: 2/3;
+    text-align: center;
+}
+
+.search-container > input {
+    padding: 0.90rem;
+    width: 60%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: #7950f2;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.movies-count{
+    grid-column: 3/4;
+}
+
+::placeholder{
+    color:rgba(177, 184, 190, 0.932);
+    font-weight: 700;
+}
+

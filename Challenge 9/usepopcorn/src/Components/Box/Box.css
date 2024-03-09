@@ -1,0 +1,9 @@
+.box-style{
+    border-radius: 5px;
+    width: 100%;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: grey;
+    margin: 1rem 1rem 0 0;
+    height:500px;
+}
