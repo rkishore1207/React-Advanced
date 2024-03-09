@@ -1,0 +1,50 @@
+.cards-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:2%;
+    flex-wrap: wrap;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: lightgray;
+    perspective: 1000px;
+    height: 100vh;
+}
+
+.question-container{
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    /* margin-bottom: 20px; */
+    width: 20%;
+    height: 100px;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.answer-container{
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    /* margin-bottom: 20px; */
+    width: 20%;
+    height: 100px;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+    background-color: aquamarine;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.question-container:active{
+    transform: rotateY(180deg);
+}
+
+.answer-container:active{
+    transform: rotateY(-180deg);
+}
