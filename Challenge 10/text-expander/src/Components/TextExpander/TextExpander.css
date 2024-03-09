@@ -1,0 +1,24 @@
+.text-expander-body{
+    padding: 1%;
+}
+
+.text-expander-body > p {
+    display: inline;
+}
+
+.text-expander-body > button {
+    display: inline;
+    border: none;
+    outline: none;
+    background-color: white;
+    font-size: 1rem;
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.text{
+    border: 1px solid gray;
+    width: 80%;
+    margin: 10% auto;
+    border-radius: 10px;
+}
