@@ -2,10 +2,11 @@ import { useEffect, useReducer } from "react";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import QuizState from "./Models/QuizState";
+import StartScreen from "./StartScreen/StartScreen";
 
 const initialState : QuizState = {
   questions:[],
-  status:''
+  status:'loading'
 }
 
 const reducer = (state:QuizState,action:any) : QuizState => {
@@ -14,12 +15,12 @@ const reducer = (state:QuizState,action:any) : QuizState => {
       return{
         ...state,
         questions:action.payload,
-        status:'Active'
+        status:'ready'
       }
     case 'error':
       return{
         ...state,
-        status:action.payload,
+        status:'error',
         questions:[]
       }
     default:
@@ -37,15 +38,32 @@ function App() {
   },[]);
 
   const[state,dispatch] = useReducer(reducer,initialState);
+  const{questions,status} = state;
 
   return (
     <div className="App">
       <Header/>
       <Main>
-        <p>Question</p>
+        {status === 'loading' && <Loader/>}
+        {status === 'error' && <CustomError message={'Failed to fetch'}/>}
+        {status === 'ready' && <StartScreen numQuestions={questions.length}/>}
       </Main>
     </div>
   );
 }
 
 export default App;
+
+function Loader(){
+  return(<p className='custom-error'>Loading...</p>)
+}
+
+interface CustomErrorProps{
+  message:string
+}
+
+function CustomError({message}:CustomErrorProps){
+  return (<div>
+    <p className='custom-error'>❌ {message}</p>
+  </div>)
+}
