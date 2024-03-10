@@ -4,6 +4,9 @@ import Main from "./Main/Main";
 import QuizState from "./Models/QuizState";
 import StartScreen from "./StartScreen/StartScreen";
 import Question from "./Question/Question";
+import Progress from "./Progress/Progress";
+import QuestionModel from "./Models/Question";
+import FinishScreen from "./FinishScreen/FinishScreen";
 
 const initialState : QuizState = {
   questions:[],
@@ -30,7 +33,9 @@ const reducer = (state:QuizState,action:any) : QuizState => {
     case 'start':
       return{
         ...state,
-        status:'active'
+        status:'active',
+        index:0,
+        points:0
       }
     case 'selectOption':
       const question = state.questions.at(state.index) ?? {
@@ -50,6 +55,11 @@ const reducer = (state:QuizState,action:any) : QuizState => {
         index:state.index + 1,
         answer:action.payload
       }
+    case 'finishQuestion':
+      return{
+        ...state,
+        status:"finished"
+      }
     default:
       return state;
   }
@@ -65,7 +75,11 @@ function App() {
   },[]);
 
   const[state,dispatch] = useReducer(reducer,initialState);
-  const{questions,status,index,answer} = state;
+  const{questions,status,index,answer,points} = state;
+  const totalPoints = questions.reduce((acc:number,value:QuestionModel)=>{
+    const updatedValue = acc + value.points;
+    return updatedValue;
+  },0);
 
   return (
     <div className="App">
@@ -74,8 +88,14 @@ function App() {
         {status === 'loading' && <Loader/>}
         {status === 'error' && <CustomError message={'Failed to fetch'}/>}
         {status === 'ready' && <StartScreen numQuestions={questions.length} dispatch={dispatch}/>}
-        {status === 'active' && <Question question={questions.at(index)} dispatch={dispatch}/>}
-        {<Next dispatch={dispatch} answer={answer}/>}
+        {status === 'active' && 
+          <>
+            <Progress index={index} totalQuestions={questions.length} currentPoints={points} totalPoints={totalPoints} answer={answer}/>
+            <Question question={questions.at(index)} dispatch={dispatch}/>
+            <Next dispatch={dispatch} answer={answer} index={index} totalQuestions={questions.length - 1}/>
+          </>
+        }
+        {status === 'finished' && <FinishScreen obtainedPoints={points} totalPoints={totalPoints} dispatch={dispatch}/>}
       </Main>
     </div>
   );
@@ -99,12 +119,21 @@ function CustomError({message}:CustomErrorProps){
 
 interface NextProps{
   dispatch:(action:any)=>void,
-  answer:number
+  answer:number,
+  index:number,
+  totalQuestions:number
 }
 
-function Next({dispatch,answer}:NextProps){
+function Next({dispatch,answer,index,totalQuestions}:NextProps){
   if(answer === -1)
     return <></>;
+  if(index === totalQuestions){
+    return(
+      <div>
+        <button onClick={()=>dispatch({type:'finishQuestion'})}>Finish</button>
+      </div>
+    )
+  }
   return(
     <div>
       <button onClick={()=>dispatch({type:'nextQuestion',payload:-1})}>Next</button>

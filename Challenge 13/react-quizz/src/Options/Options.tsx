@@ -15,15 +15,16 @@ const Options = ({questions,dispatch}:OptionsProps) => {
         <div >
             {
                 questions.options.map((option:string,index:number)=>{
-                    return(<p 
+                    return(<button 
                         className={selectedOption !== -1 ? selectedOption === questions.correctOption && selectedOption === index ? "correct": (selectedOption !== questions.correctOption && selectedOption === index ? "wrong" : (index === questions.correctOption ? "correct":"")) : ''}
-                        key={index} 
+                        key={index}
+                        disabled={selectedOption !== -1}
                         onClick={()=>{
                             setSelectedOption(index);
                             dispatch({type:'selectOption',payload:index});
                         }}>
                             {option}
-                        </p>)
+                        </button>)
                 })
             }
         </div>
