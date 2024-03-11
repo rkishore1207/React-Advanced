@@ -5,5 +5,7 @@ export default interface QuizState{
     status:string,
     index:number,
     points:number,
-    answer:number
+    answer:number,
+    highestScore:number,
+    secondsRemaining:number
 }

@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 interface FinishScreenProps{
     obtainedPoints:number,
     totalPoints:number,
-    dispatch:(action:any)=>void
+    highestScore:number,
+    dispatch:(action:any)=>void,
 }
 
-const FinishScreen = ({obtainedPoints,totalPoints,dispatch}:FinishScreenProps) => {
+const FinishScreen = ({obtainedPoints,totalPoints,highestScore,dispatch}:FinishScreenProps) => {
 
     const completedPercentage = Number((( obtainedPoints / totalPoints ) * 100).toFixed(2));
     const [emoji,setEmoji] = useState<string>('');
@@ -27,6 +28,7 @@ const FinishScreen = ({obtainedPoints,totalPoints,dispatch}:FinishScreenProps) =
         <div>
             <p>{emoji} You have scored {obtainedPoints} out of {totalPoints} ({completedPercentage}%)</p>
             <button onClick={()=>dispatch({type:'start'})}>Restart a Quizz!</button>
+            <p>Your HighestScore is {highestScore}</p>
         </div>
     );
 }

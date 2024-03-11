@@ -7,14 +7,20 @@ import Question from "./Question/Question";
 import Progress from "./Progress/Progress";
 import QuestionModel from "./Models/Question";
 import FinishScreen from "./FinishScreen/FinishScreen";
+import Footer from "./Footer/Footer";
+import Timer from "./Timer/Timer";
 
 const initialState : QuizState = {
   questions:[],
   status:'loading',
   index:0,
   points:0,
-  answer:-1
+  answer:-1,
+  highestScore:0,
+  secondsRemaining:0
 }
+
+const SECONDS_PER_QUESTION = 5;
 
 const reducer = (state:QuizState,action:any) : QuizState => {
   switch(action.type){
@@ -35,7 +41,8 @@ const reducer = (state:QuizState,action:any) : QuizState => {
         ...state,
         status:'active',
         index:0,
-        points:0
+        points:0,
+        secondsRemaining:state.questions.length * SECONDS_PER_QUESTION
       }
     case 'selectOption':
       const question = state.questions.at(state.index) ?? {
@@ -58,7 +65,14 @@ const reducer = (state:QuizState,action:any) : QuizState => {
     case 'finishQuestion':
       return{
         ...state,
-        status:"finished"
+        status:"finished",
+        highestScore:state.highestScore < state.points ? state.points : state.highestScore
+      }
+    case 'tick':
+      return{
+        ...state,
+        secondsRemaining:state.secondsRemaining - 1,
+        status:state.secondsRemaining === 0 ? 'finished' : state.status
       }
     default:
       return state;
@@ -75,7 +89,7 @@ function App() {
   },[]);
 
   const[state,dispatch] = useReducer(reducer,initialState);
-  const{questions,status,index,answer,points} = state;
+  const{questions,status,index,answer,points,highestScore,secondsRemaining} = state;
   const totalPoints = questions.reduce((acc:number,value:QuestionModel)=>{
     const updatedValue = acc + value.points;
     return updatedValue;
@@ -92,10 +106,13 @@ function App() {
           <>
             <Progress index={index} totalQuestions={questions.length} currentPoints={points} totalPoints={totalPoints} answer={answer}/>
             <Question question={questions.at(index)} dispatch={dispatch}/>
-            <Next dispatch={dispatch} answer={answer} index={index} totalQuestions={questions.length - 1}/>
+            <Footer>
+              <Timer secondsRemaining={secondsRemaining} dispatch={dispatch}/>
+              <Next dispatch={dispatch} answer={answer} index={index} totalQuestions={questions.length - 1}/>
+            </Footer>
           </>
         }
-        {status === 'finished' && <FinishScreen obtainedPoints={points} totalPoints={totalPoints} dispatch={dispatch}/>}
+        {status === 'finished' && <FinishScreen obtainedPoints={points} totalPoints={totalPoints} highestScore={highestScore} dispatch={dispatch}/>}
       </Main>
     </div>
   );
