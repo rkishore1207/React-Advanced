@@ -42,6 +42,7 @@ const reducer = (state:QuizState,action:any) : QuizState => {
         status:'active',
         index:0,
         points:0,
+        answer:-1,
         secondsRemaining:state.questions.length * SECONDS_PER_QUESTION
       }
     case 'selectOption':
@@ -72,7 +73,8 @@ const reducer = (state:QuizState,action:any) : QuizState => {
       return{
         ...state,
         secondsRemaining:state.secondsRemaining - 1,
-        status:state.secondsRemaining === 0 ? 'finished' : state.status
+        status:state.secondsRemaining === 0 ? 'finished' : state.status,
+        highestScore:state.secondsRemaining === 0 && state.highestScore < state.points ? state.points : state.highestScore
       }
     default:
       return state;
