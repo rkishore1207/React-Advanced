@@ -1,4 +1,6 @@
 
+import './StartScreen.css';
+
 interface StartScreenProps{
     numQuestions:number,
     dispatch:(action:any) => void
@@ -6,10 +8,12 @@ interface StartScreenProps{
 
 const StartScreen = ({numQuestions,dispatch}:StartScreenProps) => {
     return (
-        <div>
+        <div className="start-screen">
             <h1>Welcome to the React Quizz!</h1>
             <h2>{numQuestions} questions to test your react mastery</h2>
-            <button onClick={()=>dispatch({type:'start'})}>Let's start</button>
+            <div className="next-btn">
+                <button onClick={()=>dispatch({type:'start'})}>Let's start</button>
+            </div>
         </div>
     );
 }

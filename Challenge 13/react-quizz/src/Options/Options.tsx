@@ -12,11 +12,11 @@ const Options = ({questions,dispatch}:OptionsProps) => {
     const [selectedOption,setSelectedOption] = useState<number>(-1);
 
     return (
-        <div >
+        <div className="options-container" >
             {
                 questions.options.map((option:string,index:number)=>{
-                    return(<button 
-                        className={selectedOption !== -1 ? selectedOption === questions.correctOption && selectedOption === index ? "correct": (selectedOption !== questions.correctOption && selectedOption === index ? "wrong" : (index === questions.correctOption ? "correct":"")) : ''}
+                    return(<button
+                        className={`${selectedOption !== -1 ? selectedOption === questions.correctOption && selectedOption === index ? "correct": (selectedOption !== questions.correctOption && selectedOption === index ? "wrong" : (index === questions.correctOption ? "correct":"")) : ''} option-button`}
                         key={index}
                         disabled={selectedOption !== -1}
                         onClick={()=>{

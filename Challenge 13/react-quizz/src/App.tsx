@@ -148,13 +148,13 @@ function Next({dispatch,answer,index,totalQuestions}:NextProps){
     return <></>;
   if(index === totalQuestions){
     return(
-      <div>
+      <div className="next-btn">
         <button onClick={()=>dispatch({type:'finishQuestion'})}>Finish</button>
       </div>
     )
   }
   return(
-    <div>
+    <div className="next-btn">
       <button onClick={()=>dispatch({type:'nextQuestion',payload:-1})}>Next</button>
     </div>
   )

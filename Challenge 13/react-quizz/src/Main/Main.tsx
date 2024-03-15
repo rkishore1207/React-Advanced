@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+
+import './Main.css';
 
 interface MainProps{
     children:any
@@ -7,7 +8,7 @@ interface MainProps{
 const Main = ({children}:MainProps) => {
 
     return (
-        <div>
+        <div className="app-main">
             {children}
         </div>
     );

@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
+import './FinishScreen.css';
 
 interface FinishScreenProps{
     obtainedPoints:number,
@@ -25,10 +26,12 @@ const FinishScreen = ({obtainedPoints,totalPoints,highestScore,dispatch}:FinishS
     },[]);
 
     return (
-        <div>
-            <p>{emoji} You have scored {obtainedPoints} out of {totalPoints} ({completedPercentage}%)</p>
-            <button onClick={()=>dispatch({type:'start'})}>Restart a Quizz!</button>
-            <p>Your HighestScore is {highestScore}</p>
+        <div className="finish-screen">
+            <p>{emoji} You have scored <strong>{obtainedPoints}</strong> out of <strong>{totalPoints}</strong> ({completedPercentage}%)</p>
+            <div className="next-btn">
+                <button onClick={()=>dispatch({type:'start'})}>Restart a Quizz!</button>
+            </div>
+            <p>Your HighestScore is <strong>{highestScore}</strong></p>
         </div>
     );
 }

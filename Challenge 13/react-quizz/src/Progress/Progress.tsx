@@ -1,4 +1,6 @@
 
+import './Progress.css';
+
 interface ProgressProps{
     index:number,
     totalQuestions:number,
@@ -9,10 +11,12 @@ interface ProgressProps{
 
 const Progress = ({index,totalPoints,totalQuestions,currentPoints,answer}:ProgressProps) => {
     return (
-        <div>
+        <div className='progress-container'>
             <progress max={totalQuestions} value={index + Number(answer !== -1)}></progress>
-            <p>Questions {index + 1}/{totalQuestions}</p>
-            <p>Points {currentPoints}/{totalPoints}</p>
+            <div className='questions-points'>
+                <p>Questions {index + 1}/{totalQuestions}</p>
+                <p>Points {currentPoints}/{totalPoints}</p>
+            </div>
         </div>
     );
 }

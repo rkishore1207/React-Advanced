@@ -11,3 +11,9 @@ const[state,dispatch] = useReducer(reducer,initialState);
 - `reducer` -> pure function, and returns the next state.
 - `action` -> describes how state gonna update.
 - `dispatch` -> used to trigger state updates by sending action to the reducer from the event handler.
+
+## Create react project with Vite
+-> For install => `npm create vite@latest`
+-> Run => `npm run dev`
+-> We need to install the dependencies and packages by `npm install`.
+-> It doesn't support **Eslint extension**, so we need to add that as a `plugin` to it.

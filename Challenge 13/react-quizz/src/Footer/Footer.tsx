@@ -1,11 +1,13 @@
 
+import './Footer.css';
+
 interface FooterProps{
     children:any
 }
 
 const Footer = ({children}:FooterProps) => {
     return (
-        <div>
+        <div className="footer">
             {children}
         </div>
     );
