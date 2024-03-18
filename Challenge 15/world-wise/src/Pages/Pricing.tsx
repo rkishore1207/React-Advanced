@@ -1,4 +1,4 @@
-import PageNav from "../Components/PageNav";
+import PageNav from "../Components/PageNav/PageNav";
 
 const Pricing = () => {
     return (

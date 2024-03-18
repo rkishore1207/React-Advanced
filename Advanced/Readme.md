@@ -13,7 +13,13 @@ const[state,dispatch] = useReducer(reducer,initialState);
 - `dispatch` -> used to trigger state updates by sending action to the reducer from the event handler.
 
 ## Create react project with Vite
--> For install => `npm create vite@latest`
--> Run => `npm run dev`
--> We need to install the dependencies and packages by `npm install`.
--> It doesn't support **Eslint extension**, so we need to add that as a `plugin` to it.
+* For install => `npm create vite@latest`
+* Run => `npm run dev`
+* We need to install the dependencies and packages by `npm install`.
+* It doesn't support **Eslint extension**, so we need to add that as a `plugin` to it.
+
+## React Router
+* We can achieve the `Single Page Application` in react through **React-router**.
+* It seamlessly helps react to transition between pages without **refreshing**.
+* **NavLink** is helped to instruct user that which you are currently there by including `class="active"` in it.
+* If we are at one page and do refresing it won't go to the root page it would still staying on the current page, this scenario is existing while we sending that url to anyone and they will correctly landing to this particular page.

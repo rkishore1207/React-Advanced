@@ -1,0 +1,19 @@
+.nav{
+    background-color: aqua;
+    padding:0.1rem;
+}
+
+.nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+
+.nav>ul>li{
+    text-decoration: none;
+}
+
+:global(.test){ 
+    background-color: red;
+}
