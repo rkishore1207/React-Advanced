@@ -3,7 +3,7 @@ import HomePage from "./Pages/HomePage/HomePage";
 import Pricing from "./Pages/Pricing/Pricing";
 import Product from "./Pages/Product/Product";
 import PageNotFound from "./Pages/PageNotFound";
-import AppLayout from "./Pages/AppLayout";
+import AppLayout from "./Pages/AppLayout/AppLayout";
 import './index.css';
 import Login from "./Pages/Login/Login";
 
