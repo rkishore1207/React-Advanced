@@ -1,0 +1,13 @@
+.app-header{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    font-family: "Codystar";
+    font-size: 1.5em;
+}
+
+.header-image > img{
+    width: 80%;
+    height:80%;
+    object-fit: cover;
+}

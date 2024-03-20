@@ -1,8 +1,10 @@
 
+import './Header.css';
+
 const Header = () => {
     return (
-        <div>
-            <div>
+        <div className="app-header">
+            <div className='header-image'>
                 <img src="logo192.png" alt="React Logo"/>
             </div>
             <h1>The React Quiz</h1>

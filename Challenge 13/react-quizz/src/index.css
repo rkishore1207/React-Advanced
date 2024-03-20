@@ -1,13 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
+
+
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  color: #f1f3f5;
+  background-color: #343a40;
+  padding: 1rem 3.2rem 3.2rem;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.App{
+  width:70%;
+  margin:auto;
+}
+
+.next-btn > button{
+  border: none;
+  outline: none;
+  padding:0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #98a8b9;
+  color:white;
+  cursor: pointer;
+}
+
+.next-btn > button:hover{
+  background-color: rgb(187, 218, 243);
+}
+
+.next-btn > button:active {
+  background-color: #98a8b9;
 }
