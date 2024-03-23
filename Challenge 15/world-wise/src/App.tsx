@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage/HomePage";
 import Pricing from "./Pages/Pricing/Pricing";
@@ -6,8 +7,31 @@ import PageNotFound from "./Pages/PageNotFound";
 import AppLayout from "./Pages/AppLayout/AppLayout";
 import './index.css';
 import Login from "./Pages/Login/Login";
+import { useEffect, useState } from "react";
+import CityList from "./Components/Cities/CityList"
 
 function App() {
+
+  const BASE_URL = 'http://localhost:8000';
+  const [cities,setCities] = useState([]);
+  const [isLoading,setIsLoading] = useState(false);
+  useEffect(()=>{
+    async function fetchCities(){
+      try{
+        setIsLoading(true);
+        const result = await fetch(`${BASE_URL}/cities`);
+        const data = await result.json();
+        console.log(data);
+        setCities(data); 
+      }catch(err){
+        alert("Error");
+        console.log(err);
+      }finally{
+        setIsLoading(false);
+      }
+    }
+    fetchCities();
+  },[]);
 
   return (
     <>
@@ -17,8 +41,8 @@ function App() {
           <Route path="pricing" element={<Pricing/>}/>
           <Route path="product" element={<Product/>}/>
           <Route path="app" element={<AppLayout/>}>
-            <Route index element={<p>App Child</p>}/>
-            <Route path="cities" element={<p>List of Cities</p>}/>
+            <Route index element={<CityList isLoading={isLoading} cities={cities}/>}/>
+            <Route path="cities" element={<CityList isLoading={isLoading} cities={cities}/>}/>
             <Route path="countries" element={<p>List of Countries</p>}/>
             <Route path="form" element={<p>form</p>}/>
           </Route>
