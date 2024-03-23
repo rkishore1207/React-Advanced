@@ -28,3 +28,10 @@ const[state,dispatch] = useReducer(reducer,initialState);
 * To avoid the **same name conflicts** we are using CSS Modules.
 * In that file, if we have declare className, then it would add some `random key` to those to make not **same name clashes**.
 * Inspite of, we have to make some styles for global, we could use **`:global("className")`** into it.
+
+## Params and Query String
+* We can store states on `URL` also.
+* Why we stores states on URL is that, if we apply some filters on product page and it would show that respected filter applied page bacause we passed those **filters factors on URL**.
+* Then if I copy that URL and store as a *bookmark*, after then if i revisit that link it would show what i had done previously (that is retaining the state).
+* Params is for **particular page** and Query string is for **Golbal**.
+

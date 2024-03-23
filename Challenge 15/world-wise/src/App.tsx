@@ -10,6 +10,7 @@ import Login from "./Pages/Login/Login";
 import { useEffect, useState } from "react";
 import CityList from "./Components/Cities/CityList"
 import CountryList from "./Components/Countries/CountryList";
+import City from "./Components/City/City";
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="app" element={<AppLayout/>}>
             <Route index element={<CityList isLoading={isLoading} cities={cities}/>}/>
             <Route path="cities" element={<CityList isLoading={isLoading} cities={cities}/>}/>
+            <Route path="cities/:id" element={<City/>}/>
             <Route path="countries" element={<CountryList cities={cities} isLoading={isLoading}/>}/>
             <Route path="form" element={<p>form</p>}/>
           </Route>
