@@ -17,7 +17,7 @@ const Map = () => {
     }
 
     return (
-        <div className={styles.mapContainer}>
+        <div className={styles.mapContainer} onClick={()=>navigate('form')}>
             <p>Map</p>
             <p>{latitute},{longitude}</p>
             <button onClick={changePosition}>Change Position</button>

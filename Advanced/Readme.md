@@ -35,3 +35,8 @@ const[state,dispatch] = useReducer(reducer,initialState);
 * Then if I copy that URL and store as a *bookmark*, after then if i revisit that link it would show what i had done previously (that is retaining the state).
 * Params is for **particular page** and Query string is for **Golbal**.
 
+```javascript
+    <Navigate replace to="">
+    // whild implementing nested routes, during mounting of parent component, we doesn't know which child route will gonna mount
+    // for that purpose Navigate to cames and replace is for going back.
+```
