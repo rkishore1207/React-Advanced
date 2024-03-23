@@ -5,9 +5,17 @@ const City = () => {
 
     const {id} = useParams();
 
+
+    const searchParams = new URLSearchParams(location.search);
+    
+    const latitute = searchParams.get('lat');
+    const longitude = searchParams.get('lng');
+
+
+
     return (
         <div className={styles.city}>
-            <p>City {id}</p>
+            <p>City {id} {latitute} {longitude}</p>
         </div>
     );
 }
