@@ -9,6 +9,7 @@ import './index.css';
 import Login from "./Pages/Login/Login";
 import { useEffect, useState } from "react";
 import CityList from "./Components/Cities/CityList"
+import CountryList from "./Components/Countries/CountryList";
 
 function App() {
 
@@ -43,7 +44,7 @@ function App() {
           <Route path="app" element={<AppLayout/>}>
             <Route index element={<CityList isLoading={isLoading} cities={cities}/>}/>
             <Route path="cities" element={<CityList isLoading={isLoading} cities={cities}/>}/>
-            <Route path="countries" element={<p>List of Countries</p>}/>
+            <Route path="countries" element={<CountryList cities={cities} isLoading={isLoading}/>}/>
             <Route path="form" element={<p>form</p>}/>
           </Route>
           <Route path="login" element={<Login/>}/>
