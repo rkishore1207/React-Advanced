@@ -40,3 +40,11 @@ const[state,dispatch] = useReducer(reducer,initialState);
     // whild implementing nested routes, during mounting of parent component, we doesn't know which child route will gonna mount
     // for that purpose Navigate to cames and replace is for going back.
 ```
+
+## Context API
+* It is system to pass data through all the components down the tree without manually passing through **Props**.
+* It acts as a `Global State`.
+* `Provider` -> Gives all child components access to value
+* `Value` -> It has the State variables and setter functions
+* `Consumer` -> All the components that gonna use context values
+* Once the value got changed, all the consumer who used its value got **re-render**.
