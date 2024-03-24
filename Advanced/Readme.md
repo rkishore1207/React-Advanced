@@ -28,3 +28,23 @@ const[state,dispatch] = useReducer(reducer,initialState);
 * To avoid the **same name conflicts** we are using CSS Modules.
 * In that file, if we have declare className, then it would add some `random key` to those to make not **same name clashes**.
 * Inspite of, we have to make some styles for global, we could use **`:global("className")`** into it.
+
+## Params and Query String
+* We can store states on `URL` also.
+* Why we stores states on URL is that, if we apply some filters on product page and it would show that respected filter applied page bacause we passed those **filters factors on URL**.
+* Then if I copy that URL and store as a *bookmark*, after then if i revisit that link it would show what i had done previously (that is retaining the state).
+* Params is for **particular page** and Query string is for **Golbal**.
+
+```javascript
+    <Navigate replace to="">
+    // whild implementing nested routes, during mounting of parent component, we doesn't know which child route will gonna mount
+    // for that purpose Navigate to cames and replace is for going back.
+```
+
+## Context API
+* It is system to pass data through all the components down the tree without manually passing through **Props**.
+* It acts as a `Global State`.
+* `Provider` -> Gives all child components access to value
+* `Value` -> It has the State variables and setter functions
+* `Consumer` -> All the components that gonna use context values
+* Once the value got changed, all the consumer who used its value got **re-render**.
