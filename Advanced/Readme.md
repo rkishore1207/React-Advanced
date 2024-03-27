@@ -48,3 +48,5 @@ const[state,dispatch] = useReducer(reducer,initialState);
 * `Value` -> It has the State variables and setter functions
 * `Consumer` -> All the components that gonna use context values
 * Once the value got changed, all the consumer who used its value got **re-render**.
+* We could create out own `custom hook` for consuming context **(useContext(PostContext))**.
+* But if we **consume** that context outside of the provider wrapped components, it results `undefined`.
