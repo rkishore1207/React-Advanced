@@ -14,6 +14,7 @@ export const CitiesProvider = ({children}:CitiesProviderProps) => {
     const BASE_URL = 'http://localhost:8000';
     const [cities,setCities] = useState([]);
     const [isLoading,setIsLoading] = useState(false);
+    const [currentCity,setCurrentCity] = useState({});
     
     useEffect(()=>{
         async function fetchCities(){
@@ -33,10 +34,24 @@ export const CitiesProvider = ({children}:CitiesProviderProps) => {
         fetchCities();
     },[]);
 
+    const fetchCity = async (id:number) => {
+        try{
+            const result = await fetch(`http://localhost:8000/cities/${id}`);
+            const city = await result.json();
+            console.log(city);
+            setCurrentCity(city);
+        }
+        catch(err:any){
+            console.log(err.message);
+        }
+    }
+
     return (
         <CitiesContext.Provider value={{
             cities:cities,
-            isLoading:isLoading
+            isLoading:isLoading,
+            currentCity:currentCity,
+            getCity:fetchCity
         }}>
             {children}
         </CitiesContext.Provider>
