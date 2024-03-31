@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import { useNavigate } from 'react-router-dom';
 import styles from './Map.module.css';
@@ -14,13 +15,6 @@ const Map = () => {
     const {mapPosition,setMapPosition,latitute,longitude} = useUrlPosition();
     const {isLoading:geoLoading,position:geoPosition,getPosition} = useGeoLocation();
     
-    // const location = useLocation();
-    // const navigate = useNavigate();
-    // const changePosition = () => {
-    //     searchParams.set("lat",'20');
-    //     searchParams.set("lng",'30');
-    //     navigate({search:searchParams.toString()});
-    // }
     useEffect(()=>{
       setMapPosition([latitute,longitude]);
     },[latitute,longitude]);

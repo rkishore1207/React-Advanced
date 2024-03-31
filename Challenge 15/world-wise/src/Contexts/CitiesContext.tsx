@@ -12,7 +12,7 @@ interface CitiesProviderProps{
 export const CitiesProvider = ({children}:CitiesProviderProps) => {
 
     const BASE_URL = 'http://localhost:8000';
-    const [cities,setCities] = useState([]);
+    const [cities,setCities] = useState<any>([]);
     const [isLoading,setIsLoading] = useState(false);
     const [currentCity,setCurrentCity] = useState({});
     
@@ -46,12 +46,53 @@ export const CitiesProvider = ({children}:CitiesProviderProps) => {
         }
     }
 
+    const createCity = async (newCity:any) => {
+        try{
+            setIsLoading(true);
+            const result = await fetch(`${BASE_URL}/cities`,{
+                method:'POST',
+                body:JSON.stringify(newCity),
+                headers:{
+                    "Content-Type":"application/json"
+                }
+            });
+            const city = await result.json();
+            console.log(city);
+            setCities((prevCity:any)=>[...prevCity,city]);
+        }
+        catch(err:any){
+            console.log(err.message);
+        }
+        finally{
+            setIsLoading(false);
+        }
+    }
+
+    const deleteCity = async (id:number) => {
+        try{
+            setIsLoading(true);
+            await fetch(`${BASE_URL}/cities/${id}`,{
+                method:'DELETE'
+            });
+            const updatedCity = cities.filter((city:any)=>city.id !== id);
+            setCities(updatedCity);
+        }
+        catch(err:any){
+            console.log(err.message);
+        }
+        finally{
+            setIsLoading(false);
+        }
+    }
+
     return (
         <CitiesContext.Provider value={{
             cities:cities,
             isLoading:isLoading,
             currentCity:currentCity,
-            getCity:fetchCity
+            getCity:fetchCity,
+            addCity:createCity,
+            deleteCity:deleteCity
         }}>
             {children}
         </CitiesContext.Provider>

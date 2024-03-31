@@ -9,7 +9,7 @@ interface CityItemProps{
 
 
 const CityItem = ({city}:CityItemProps) => {
-    const {currentCity} = useCities();
+    const {currentCity,deleteCity} = useCities();
 
     const formatDate = (date:any) =>
     new Intl.DateTimeFormat("en", {
@@ -20,13 +20,18 @@ const CityItem = ({city}:CityItemProps) => {
 
     const {cityName,date,emoji,id,position} = city;
 
+    const handleDelete = (event:any) => {
+        event.preventDefault();
+        deleteCity(city.id);
+    }
+
     return (
         <li>
             <Link className={`${styles.cityItem} ${currentCity.id === id ? styles['cityItem--active'] : ''}`} to={`${id}?lat=${position.lat}&lng=${position.lng}`}>
                 <span className={styles.emoji}>{emoji}</span>
                 <h3 className={styles.name}>{cityName}</h3>
                 <time className={styles.date}>{formatDate(date)}</time>
-                <button className={styles.deleteBtn}>&times;</button>
+                <button className={styles.deleteBtn} onClick={handleDelete}>&times;</button>
             </Link>
         </li>
     );
