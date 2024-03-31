@@ -1,16 +1,56 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Form.module.css';
 import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
+import { useUrlPosition } from '../../Hooks/useUrlPosition';
+import Spinner from '../Spinner/Spinner';
+import Message from '../Message/Message';
+
+const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
+
+export function convertToEmoji(countryCode:any) {
+  const codePoints = countryCode
+    .toUpperCase()
+    .split("")
+    .map((char:any) => 127397 + char.charCodeAt());
+  return String.fromCodePoint(...codePoints);
+}
 
 const Form = () => {
-    const [cityName, setCityName] = useState("");
-//   const [country, setCountry] = useState("");
+  const [cityName, setCityName] = useState("");
+  // const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
+  const [emoji,setEmoji] = useState('');
+  const [error,setError] = useState('');
+  const [isLoading,setIsLoading] = useState(false);
 
+  const {latitute,longitude} = useUrlPosition();
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    const fetchCityData = async () => {
+      try{
+        setIsLoading(true);
+        setError('');
+        const res = await fetch(`${BASE_URL}?latitude=${latitute}&longitude=${longitude}`);
+        const data = await res.json();
+        console.log(data);
+        setCityName(data.locality || data.city || '');
+        setEmoji(convertToEmoji(data.countryCode));
+        if(!data.countryCode) throw new Error('Seems there is no city is present, please click somewhere else 😊')
+      }catch(err:any){
+        setError(err.message);
+      }finally{
+        setIsLoading(false);
+      }
+    }
+    fetchCityData();
+  },[latitute,longitude]);
+
+  if(isLoading) return <Spinner/>
+  if(error) return <Message message={error}/>
 
   return (
     <form className={styles.form}>
@@ -21,7 +61,7 @@ const Form = () => {
           onChange={(e) => setCityName(e.target.value)}
           value={cityName}
         />
-        {/* <span className={styles.flag}>{emoji}</span> */}
+        <span className={styles.flag}>{emoji}</span>
       </div>
 
       <div className={styles.row}>
