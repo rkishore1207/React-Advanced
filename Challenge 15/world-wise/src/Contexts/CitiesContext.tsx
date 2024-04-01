@@ -1,34 +1,63 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-refresh/only-export-components */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 
 const CitiesContext = React.createContext({});
+
+interface ContextState{
+    cities:any,
+    isLoading:boolean,
+    currentCity:any
+}
 
 interface CitiesProviderProps{
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     children:any
 }
 
+const initialState:ContextState = {
+    cities:[],
+    isLoading:false,
+    currentCity:{}
+}
+
+const reducer = (state:ContextState,action:any) : ContextState => {
+    switch(action.type){
+        case 'setLoading':
+            return{...state,isLoading:true}
+        case 'unSetLoading':
+            return{...state,isLoading:false}
+        case 'cities/loaded':
+            return{...state,cities:action.payload}
+        case 'city/get':
+            return{...state,currentCity:action.payload}
+        case 'city/create':
+            return{...state,cities:[...state.cities,action.payload],currentCity:action.payload}
+        case 'city/delete':
+            return{...state,cities:state.cities.filter((city:any)=>city.id !== action.payload),currentCity:{}}
+        default:
+            return state;
+    }
+}
+
 export const CitiesProvider = ({children}:CitiesProviderProps) => {
 
     const BASE_URL = 'http://localhost:8000';
-    const [cities,setCities] = useState<any>([]);
-    const [isLoading,setIsLoading] = useState(false);
-    const [currentCity,setCurrentCity] = useState({});
+    const [state,dispatch] = useReducer(reducer,initialState);
+    const {cities,isLoading,currentCity} = state;
     
     useEffect(()=>{
         async function fetchCities(){
         try{
-            setIsLoading(true);
+            dispatch({type:'setLoading'});
             const result = await fetch(`${BASE_URL}/cities`);
             const data = await result.json();
-            console.log(data);
-            setCities(data); 
+            dispatch({type:'cities/loaded',payload:data});
         }catch(err){
             alert("Error");
             console.log(err);
         }finally{
-            setIsLoading(false);
+            dispatch({type:'unSetLoading'});
         }
         }
         fetchCities();
@@ -38,8 +67,7 @@ export const CitiesProvider = ({children}:CitiesProviderProps) => {
         try{
             const result = await fetch(`http://localhost:8000/cities/${id}`);
             const city = await result.json();
-            console.log(city);
-            setCurrentCity(city);
+            dispatch({type:'city/get',payload:city});
         }
         catch(err:any){
             console.log(err.message);
@@ -48,7 +76,7 @@ export const CitiesProvider = ({children}:CitiesProviderProps) => {
 
     const createCity = async (newCity:any) => {
         try{
-            setIsLoading(true);
+            dispatch({type:'setLoading'});
             const result = await fetch(`${BASE_URL}/cities`,{
                 method:'POST',
                 body:JSON.stringify(newCity),
@@ -57,31 +85,29 @@ export const CitiesProvider = ({children}:CitiesProviderProps) => {
                 }
             });
             const city = await result.json();
-            console.log(city);
-            setCities((prevCity:any)=>[...prevCity,city]);
+            dispatch({type:'city/create',payload:city});
         }
         catch(err:any){
             console.log(err.message);
         }
         finally{
-            setIsLoading(false);
+            dispatch({type:'unSetLoading'});
         }
     }
 
     const deleteCity = async (id:number) => {
         try{
-            setIsLoading(true);
+            dispatch({type:'setLoading'});
             await fetch(`${BASE_URL}/cities/${id}`,{
                 method:'DELETE'
             });
-            const updatedCity = cities.filter((city:any)=>city.id !== id);
-            setCities(updatedCity);
+            dispatch({type:'city/delete',payload:id});
         }
         catch(err:any){
             console.log(err.message);
         }
         finally{
-            setIsLoading(false);
+            dispatch({type:'unSetLoading'});
         }
     }
 

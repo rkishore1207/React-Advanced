@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./City.module.css";
@@ -25,10 +26,6 @@ const City = () => {
     },[id]);
 
     if(isLoading) return <Spinner/>
-//   const searchParams = new URLSearchParams(location.search);
-
-//   const latitute = searchParams.get("lat");
-//   const longitude = searchParams.get("lng");
 
   const { cityName, emoji, date, notes } = currentCity;
 
