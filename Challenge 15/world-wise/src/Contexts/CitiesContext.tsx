@@ -24,7 +24,7 @@ const initialState:ContextState = {
 const reducer = (state:ContextState,action:any) : ContextState => {
     switch(action.type){
         case 'setLoading':
-            return{...state,isLoading:true}
+            return{...state,isLoading:true,currentCity:{}}
         case 'unSetLoading':
             return{...state,isLoading:false}
         case 'cities/loaded':
