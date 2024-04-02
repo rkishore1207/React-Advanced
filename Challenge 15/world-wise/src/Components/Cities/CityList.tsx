@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useCities } from "../../Contexts/CitiesContext";
 import Message from "../Message/Message";
 import Spinner from "../Spinner/Spinner";
 import CityItem from "./CityItem/CityItem";
 import styles from './CityList.module.css';
 
-interface CityListProps{
-    isLoading:boolean,
-    cities:any
-}
-
-const CityList = ({isLoading,cities}:CityListProps) => {
+const CityList = () => {
+    const {isLoading,cities} = useCities();
 
     if(isLoading) return <Spinner/> ;
 

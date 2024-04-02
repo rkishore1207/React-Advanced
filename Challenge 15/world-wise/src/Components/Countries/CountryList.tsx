@@ -3,13 +3,11 @@ import Message from "../Message/Message";
 import Spinner from "../Spinner/Spinner";
 import styles from './CountryList.module.css';
 import CountryItem from "./CountryItem.tsx/CountryItem";
+import { useCities } from "../../Contexts/CitiesContext";
 
-interface CityListProps{
-    isLoading:boolean,
-    cities:any
-}
+const CountryList = () => {
 
-const CountryList = ({isLoading,cities}:CityListProps) => {
+    const {isLoading,cities} = useCities();
 
     if(isLoading) return <Spinner/> ;
 
