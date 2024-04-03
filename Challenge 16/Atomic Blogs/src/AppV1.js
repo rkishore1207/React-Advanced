@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Provider,{usePosts} from "./Provider";
 import { faker } from "@faker-js/faker";
+import Test from "./Test";
 
 function AppV1() {
 
@@ -30,6 +31,7 @@ function AppV1() {
             <Header/>
             <Main />
             <Archive />
+            <Test/>
             <Footer />
         </Provider>
       </section>

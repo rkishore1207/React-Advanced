@@ -51,4 +51,13 @@ const[state,dispatch] = useReducer(reducer,initialState);
 * We could create out own `custom hook` for consuming context **(useContext(PostContext))**.
 * But if we **consume** that context outside of the provider wrapped components, it results `undefined`.
 
-![State Storing Places](https://github.com/rkishore1207/React-Advanced/assets/146698138/d5cc52f8-8fe7-4fcc-9bb9-ec18b3f0c95f)
+![State Storing Places](https://github.com/rkishore1207/React-Advanced/assets/146698138/d5cc52f8-8fe7-4fcc-9bb9-ec18b3f0c95f).
+
+## Performance, Optimization and reduce wasted renders
+![Performance increase tools](https://github.com/rkishore1207/React-Advanced/assets/146698138/5881c72c-4ba7-4577-8bc0-c67a6613db20)
+
+* While **states get update**, **context changes** and **Parent component re-renders**, those particular component will re-render.
+* But while rerendering, browser DOM won't get update, just **virtual DOM** only update and based on the virtual DOM's changes browser DOM get update.
+### Optimization Trick
+* If one component have another component in it, and if this component get updates surely that component also get **rerender**. This is not we want.
+* So the fix is, we can pass that component as **child component** to it (`component composition`), in this case child component get rendered first, after then parent component execute, so that child component won't re-render again.
