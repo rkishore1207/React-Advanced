@@ -61,3 +61,15 @@ const[state,dispatch] = useReducer(reducer,initialState);
 ### Optimization Trick
 * If one component have another component in it, and if this component get updates surely that component also get **rerender**. This is not we want.
 * So the fix is, we can pass that component as **child component** to it (`component composition`), in this case child component get rendered first, after then parent component execute, so that child component won't re-render again.
+
+## Memoization
+* It is optimization techniques, which executes a **pure function once**, and saves that in **memory**.
+* If again the same function with same inputs are given, it won't run the **entire function again**, instead of it get back the **previous result** from the cache.
+* Regularly, if the parent component changed, all child components which are receive props should do re-rendering.
+* But with `useMemo`, the child component won't re-render,<u> if the props value didn't change</u>.
+* Only if the props from parent were change, the child component will re-render.
+* If we pass **primitive** value to the funtion which gonna execute **slow component**, then if it goes again then it knows that it's redundant, hence memo get back the **previous component** from the `cache`.
+* But if that would be a **object**, then it could not compare with the new one, because every time if the component re-render, **objects and functions** are computed `newly`. 
+* **Memoize component** cannot recognize the new object, fix is we need to memoize that object also by `useMemo()`;
+* Same things for functions also but by `useCallback()`.
+* But if we pass the **useState function** then memo function can recognize, why? because that state function will execute **only once** while component gets mount, and for all other rendering it would pass that `same state function` right?.
