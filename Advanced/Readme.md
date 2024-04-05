@@ -73,3 +73,11 @@ const[state,dispatch] = useReducer(reducer,initialState);
 * **Memoize component** cannot recognize the new object, fix is we need to memoize that object also by `useMemo()`;
 * Same things for functions also but by `useCallback()`.
 * But if we pass the **useState function** then memo function can recognize, why? because that state function will execute **only once** while component gets mount, and for all other rendering it would pass that `same state function` right?.
+* We should `memoize` the context values also using **useMemo()**, to restrict *wasted re-renders* while passing the same value in the **context**.
+* If one useEffect is running **infinite times** because of dependency array, we can achieve that by using `useCallBack()` for the items present in the useEffect's dependency array.
+### Lazy Loading
+* Change the import by `lazy()`, and wrap which components or page should come under **lazy loading**.
+* At first time, the request was made all the code from the server are came to the browser as **whole bundle**.
+* And then based on our action, it will render within that bundle and show that particular component.
+* But Lazy loading is, **divided our whole bundle into chunks**, and based on that particular component request it will get back the page from **server**.
+

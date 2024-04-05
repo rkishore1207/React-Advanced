@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import Provider,{usePosts} from "./Provider";
 import { faker } from "@faker-js/faker";
 import Test from "./Test";
@@ -31,7 +31,7 @@ function AppV1() {
             <Header/>
             <Main />
             <Archive />
-            <Test/>
+            {/* <Test/> */}
             <Footer />
         </Provider>
       </section>
@@ -74,14 +74,14 @@ function Results() {
   return <p>🚀 {posts.length} atomic posts found</p>;
 }
 
-function Main() {
+const Main = memo(function Main() {
   return (
     <main>
       <FormAddPost/>
       <Posts/>
     </main>
   );
-}
+})
 
 function Posts() {
   return (
