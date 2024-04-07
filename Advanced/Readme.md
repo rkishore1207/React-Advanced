@@ -80,4 +80,14 @@ const[state,dispatch] = useReducer(reducer,initialState);
 * At first time, the request was made all the code from the server are came to the browser as **whole bundle**.
 * And then based on our action, it will render within that bundle and show that particular component.
 * But Lazy loading is, **divided our whole bundle into chunks**, and based on that particular component request it will get back the page from **server**.
+![Do's and Don't of Optimization](https://github.com/rkishore1207/React-Advanced/assets/146698138/20069e2f-1e0f-4f7f-afdb-68e7bcb4f1d8)
 
+## Strategies for UseEffect() Hook
+* Don't use the `entire object` in the dependency array, because it usually **changes between renders** and results to execute the **useEffect regularly** like -> (useEffect with zero dependency).
+* But if we want to use, we could `memoize` it and use.
+* If any function that have **reactive state**, we need to include that function at dependency array.
+* **Reactive state** means which are the variables or functions that depends on <u>hooks, props, contexts or reducer</u>.
+* If one function has multiple reactive values, we can go for `reducer`.
+* Didn't use **setState() or dispatch** on dependency, because that things are *rendered only once*, that also during initial rendering.
+* We could not use **useEffect() frequently**, if none of the other choices are there, then we can go for useEffect().
+* In react it is called as <u>**`Escape hatch`**</u>.
