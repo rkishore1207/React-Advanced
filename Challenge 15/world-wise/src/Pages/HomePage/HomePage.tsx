@@ -5,7 +5,7 @@ import { useAuth } from "../../Contexts/FakeAuthContext";
 
 const HomePage = () => {
 
-    const{isAuthentication} = useAuth();
+    const{isAuthenticated} = useAuth();
 
     return (
         <div>
@@ -22,7 +22,7 @@ const HomePage = () => {
                     of. Never forget your wonderful experiences, and show your friends how
                     you have wandered the world.
                     </h2>
-                    <Link to={isAuthentication ? '/app' : '/login'} className="cta">Start Tracking Now</Link>
+                    <Link to={isAuthenticated ? '/app' : '/login'} className="cta">Start Tracking Now</Link>
                 </section>
             </main>
         </div>

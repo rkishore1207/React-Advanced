@@ -31,7 +31,7 @@ const Map = () => {
           </Button>
         }
         <MapContainer
-          center={mapPosition}
+          center={[mapPosition[0],mapPosition[1]]}
           zoom={10}
           scrollWheelZoom={true}
           className={styles.map}
