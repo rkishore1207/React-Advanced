@@ -97,6 +97,7 @@ const[state,dispatch] = useReducer(reducer,initialState);
 * npm install -D @types/redux
 * npm i react-redux
 * npm i redux-thunk
+* npm install @redux-devtools/extension -> **Devtools**
 * **Redux Thunk** is the `middleware`, to perform certain operations `asynchronously` and replace the dispatched payload, then only it will reach the reducer and update the state.
 * That is, some async actions were happening between dispatch and state updation (at store).
 * Regularly thunk should return a `function` and if function are there then redux identified that as a **Thunk function**.
