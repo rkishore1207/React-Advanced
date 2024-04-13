@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { PayLoan, RequestLoan, deposit, withdraw } from "./AccountSlice";
+import { ReduxState } from "../../store";
 
 function AccountOperations() {
   const [depositAmount, setDepositAmount] = useState("");
@@ -7,13 +10,33 @@ function AccountOperations() {
   const [loanPurpose, setLoanPurpose] = useState("");
   const [currency, setCurrency] = useState("USD");
 
-  function handleDeposit() {}
+  const dispatch = useDispatch();
+  const {isLoading} = useSelector((state:ReduxState)=>state.account);
 
-  function handleWithdrawal() {}
+  function handleDeposit() {
+    if(!depositAmount) return;
+    dispatch(deposit(Number(depositAmount),currency));
+    setDepositAmount('');
+    setCurrency('');
+  }
 
-  function handleRequestLoan() {}
+  function handleWithdrawal() {
+    if(!withdrawalAmount) return;
+    dispatch(withdraw(Number(withdrawalAmount)));
+    setWithdrawalAmount('');
+  }
 
-  function handlePayLoan() {}
+  function handleRequestLoan() {
+    if(!loanAmount || !loanPurpose) return;
+    dispatch(RequestLoan(Number(loanAmount),loanPurpose));
+    setLoanAmount('');
+    setLoanPurpose('');
+  }
+
+  function handlePayLoan() {
+    // if(!loanAmount) return;
+    dispatch(PayLoan());
+  }
 
   return (
     <div>
@@ -35,7 +58,11 @@ function AccountOperations() {
             <option value="GBP">British Pound</option>
           </select>
 
-          <button onClick={handleDeposit}>Deposit {depositAmount}</button>
+          <button onClick={handleDeposit} disabled={isLoading}>
+            {
+              isLoading ? 'Converting...' : `Deposit ${depositAmount}`
+            }
+          </button>
         </div>
 
         <div>
@@ -67,7 +94,7 @@ function AccountOperations() {
         </div>
 
         <div>
-          <span>Pay back $X</span>
+          <span>Pay back {loanAmount}</span>
           <button onClick={handlePayLoan}>Pay loan</button>
         </div>
       </div>

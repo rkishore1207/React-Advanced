@@ -1,7 +1,8 @@
 export interface BankAccount{
     balance:number,
     loan:number,
-    loanPurpose:string
+    loanPurpose:string,
+    isLoading:boolean
 }
 
 export interface Customer{
