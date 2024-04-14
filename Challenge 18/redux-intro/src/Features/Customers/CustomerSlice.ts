@@ -1,3 +1,4 @@
+import { createSlice } from "@reduxjs/toolkit";
 import { Customer } from "../../Model/Models";
 
 const initialCustomerState : Customer  = {
@@ -6,6 +7,34 @@ const initialCustomerState : Customer  = {
     createdAt:''
 }
 
+const customerSlice = createSlice({
+    name:'customer',
+    initialState:initialCustomerState,
+    reducers:{
+        createCustomer:{
+            prepare(fullName,nationalID):any{
+                return{
+                    payload:{fullName,nationalID}
+                }
+            },
+            
+            reducer(state,action){
+                state.fullName = action.payload.fullName;
+                state.nationalID = action.payload.nationalID;
+                state.createdAt = new Date().toISOString();
+            }
+        },
+        updateCustomer(state,action){
+            state.fullName = action.payload;
+        }
+    }
+});
+
+export const customerReducer = customerSlice.reducer;
+
+export const {createCustomer,updateCustomer} = customerSlice.actions;
+
+/*
 export const customerReducer = (state:Customer = initialCustomerState,action:any) : Customer =>{
     switch(action.type){
         case 'customer/createCustomer':
@@ -24,3 +53,4 @@ export const createCustomer = (fullName:string,nationalID:string) => {
         createdAt:new Date().toISOString(),
     }}
 }
+*/

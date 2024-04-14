@@ -101,3 +101,8 @@ const[state,dispatch] = useReducer(reducer,initialState);
 * **Redux Thunk** is the `middleware`, to perform certain operations `asynchronously` and replace the dispatched payload, then only it will reach the reducer and update the state.
 * That is, some async actions were happening between dispatch and state updation (at store).
 * Regularly thunk should return a `function` and if function are there then redux identified that as a **Thunk function**.
+
+### Redux Toolkit 
+- npm install @reduxjs/toolkit --save.
+> This way of implementing redux is completely very less and clean code, and this library itself having `Thunk middleware, action creators and redux devtools`. 
+* No need to install everything separately.

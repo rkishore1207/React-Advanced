@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { PayLoan, RequestLoan, deposit, withdraw } from "./AccountSlice";
+import { payLoan, requestLoan, deposit, withdraw } from "./AccountSlice-TK";
 import { ReduxState } from "../../store";
 
 function AccountOperations() {
@@ -28,14 +28,14 @@ function AccountOperations() {
 
   function handleRequestLoan() {
     if(!loanAmount || !loanPurpose) return;
-    dispatch(RequestLoan(Number(loanAmount),loanPurpose));
+    dispatch(requestLoan(Number(loanAmount),loanPurpose));
     setLoanAmount('');
     setLoanPurpose('');
   }
 
   function handlePayLoan() {
     // if(!loanAmount) return;
-    dispatch(PayLoan());
+    dispatch(payLoan());
   }
 
   return (
