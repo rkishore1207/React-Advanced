@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 // // https://uibakery.io/regex-library/phone-number
-// // const isValidPhone = (str) =>
-// //   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
-// //     str
-// //   );
+const isValidPhone = (str:string) =>
+  /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
+    str
+  );
 
-import { useState } from "react";
-import { Form } from "react-router-dom";
+import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
+import { createOrder } from "../../services/apiRestaurant";
 
 const fakeCart = [
   {
@@ -33,23 +33,13 @@ const fakeCart = [
   },
 ];
 
-interface OrderModel{
-  fullName:string,
-  phoneNumber:string,
-  address:string,
-  priority:boolean,
-  cart:any
-}
-
 function CreateOrder() {
+
   const cart = fakeCart;
-  const [order,setOrder] = useState<OrderModel>({
-    fullName:"",
-    phoneNumber:"",
-    address:"",
-    priority:false,
-    cart:JSON.stringify(cart)
-  })
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+
+  const formError:any = useActionData();
 
   return (
     <div>
@@ -58,20 +48,21 @@ function CreateOrder() {
       <Form method="POST">
         <div>
           <label>First Name</label>
-          <input type="text" name="customer" required onChange={(event)=>setOrder({...order,fullName:event?.target.value})}/>
+          <input type="text" name="customer" required />
         </div>
 
         <div>
           <label>Phone number</label>
           <div>
-            <input type="tel" name="phone" required onChange={(event)=>setOrder({...order,phoneNumber:event?.target.value})}/>
+            <input type="tel" name="phone" required />
+            {formError?.phone && <p>{formError.phone}</p>}
           </div>
         </div>
 
         <div>
           <label>Address</label>
           <div>
-            <input type="text" name="address" required onChange={(event)=>setOrder({...order,address:event?.target.value})}/>
+            <input type="text" name="address" required />
           </div>
         </div>
 
@@ -80,16 +71,17 @@ function CreateOrder() {
             type="checkbox"
             name="priority"
             id="priority"
-            // value={withPriority}
-            onChange={(event)=>setOrder({...order,priority:event?.target.checked})}
+            // value={order.priority}
           />
           <label htmlFor="priority">Want to yo give your order priority?</label>
         </div>
 
-        {/* <input type="button" name="button" value={"Button"}  onClick={()=>setOrder({...order,cart:cart})}/> */}
+        <div>
+          <input type="hidden" value={JSON.stringify(cart)} name="cart"/>
+        </div>
 
         <div>
-          <button>Order now</button>
+          <button disabled={isSubmitting}> { isSubmitting ? 'Placing Order' : 'Order now'} </button>
         </div>
       </Form>
     </div>
@@ -99,8 +91,17 @@ function CreateOrder() {
 export const action = async ({request}:any) => {
   const result = await request.formData();
   const data = Object.fromEntries(result);
-  console.log(JSON.parse(data.cart));
-  return null;
+  const order:any = {
+    ...data,
+    cart : JSON.parse(data.cart),
+    priority: data.priority === "on"
+  }
+  console.log(order);
+  const errors:any = {};
+  if(!isValidPhone(order.phone)) errors.phone = 'Please provide correct number';
+  if(Object.keys(errors).length > 0) return errors;
+  const newOrder = await createOrder(order);
+  return redirect(`/order/${newOrder.id}`);
 }
 
 export default CreateOrder;
