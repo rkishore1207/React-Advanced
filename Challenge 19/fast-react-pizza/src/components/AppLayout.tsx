@@ -12,7 +12,6 @@ function AppLayout() {
             {isLoading && <Spinner/>}
             <Header/>
             <main>
-                <h2>Content</h2>
                 <Outlet/>
             </main>
             <CartOverview/>
