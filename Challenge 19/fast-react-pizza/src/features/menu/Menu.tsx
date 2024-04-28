@@ -10,7 +10,7 @@ function Menu() {
   console.log(menu);
 
   return (
-    <div>
+    <div className="divide-y divide-stone-200 px-2">
       {
         menu.map((item:Pizza,index:number)=>{
           return (
