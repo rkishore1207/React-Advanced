@@ -1,4 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { createSlice } from "@reduxjs/toolkit";
+
+/*
 function getPosition():any {
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -23,5 +27,21 @@ export async function fetchAddress() {
 
   // 3) Then we return an object with the data that we are interested in
   return { position, address };
+}*/
+
+const initialState : any ={
+  userName : ""
 }
 
+const userSlice = createSlice({
+  name:"user",
+  initialState:initialState,
+  reducers:{
+    updateName(state,action){
+      state.userName = action.payload;
+    }
+  }
+});
+
+export const {updateName} = userSlice.actions;
+export const userReducer = userSlice.reducer;

@@ -5,10 +5,11 @@ interface ButtonProps{
     children:any,
     disabled?:boolean,
     to?:string,
-    type?:string
+    type?:string,
+    onClick?:()=>void,
 }
 
-function Button({ children, disabled = false, to = '', type='primary' } : ButtonProps) {
+function Button({ children, disabled = false, to = '', type='primary', onClick} : ButtonProps) {
   const base =
     'inline-block text-sm rounded-full bg-yellow-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed';
 
@@ -27,7 +28,7 @@ function Button({ children, disabled = false, to = '', type='primary' } : Button
     );
 
   return (
-    <button disabled={disabled} className={styles[type]}>
+    <button disabled={disabled} onClick={onClick} className={styles[type]}>
       {children}
     </button>
   );
