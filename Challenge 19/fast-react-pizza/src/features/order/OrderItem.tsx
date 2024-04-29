@@ -2,10 +2,11 @@
 import { formatCurrency } from "../../utils/helpers";
 
 interface OrderItemProps{
-  item:any
+  item:any,
+  ingredients:string[]
 }
 
-function OrderItem({ item }:OrderItemProps) {
+function OrderItem({ item, ingredients }:OrderItemProps) {
   const { quantity, name, totalPrice } = item;
 
   return (
@@ -15,6 +16,11 @@ function OrderItem({ item }:OrderItemProps) {
           <span className="font-bold">{quantity}&times;</span> {name}
         </p>
         <p className="font-bold">{formatCurrency(totalPrice)}</p>
+      </div>
+      <div className="uppercase italic text-stone-500 font-semibold text-sm">
+        { !ingredients ? 'Loading...' :
+          ingredients.join(', ')
+        }
       </div>
     </li>
   );

@@ -9,40 +9,32 @@ const isValidPhone = (str:string) =>
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
 import Button from "../../components/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import CartItemModel from "../../models/CartItem";
+import { formatCurrency } from "../../utils/helpers";
+import { fetchAddress } from "../users/userSlice";
 
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: "Mediterranean",
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: "Vegetale",
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: "Spinach and Mushroom",
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
 
 function CreateOrder() {
 
-  const cart = fakeCart;
+  const {cart} = useSelector((state:any)=>state.cart);
+  const [withPriority,setWithPriority] = useState<boolean>(false);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
-  const {userName} = useSelector((state:any)=>state.user);
+  const {userName,status:addressStatus,position,address} = useSelector((state:any)=>state.user);
+
+  const isAddressStatus = addressStatus === "loading";
+  const totalAmount = cart.reduce((acc:number,item:CartItemModel)=>{
+    const updatedValue = item.totalPrice + acc;
+    return updatedValue;
+  },0);
+
+  const priorityPrice = withPriority ? totalAmount * 0.2 : 0;
+  const totalPrice = totalAmount + priorityPrice;
 
   const formErrors:any = useActionData();
+  const dispatch = useDispatch();
 
   return (
     <div className="px-4 py-6">
@@ -67,7 +59,7 @@ function CreateOrder() {
           </div>
         </div>
 
-        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center relative">
           <label className="sm:basis-40">Address</label>
           <div className="grow">
             <input
@@ -75,8 +67,18 @@ function CreateOrder() {
               type="text"
               name="address"
               required
+              disabled={isAddressStatus}
+              defaultValue={address}
             />
           </div>
+          { !position.latitude && !position.longitude &&
+            <span className="absolute right-1">
+              <Button type="small" onClick={(event:any)=>{
+                event.preventDefault();
+                dispatch(fetchAddress());
+              }}>GetPosition</Button>
+            </span>
+          }
         </div>
 
         <div className="mb-12 flex items-center gap-5">
@@ -85,18 +87,18 @@ function CreateOrder() {
             type="checkbox"
             name="priority"
             id="priority"
-            // value={withPriority}
-            // onChange={(e) => setWithPriority(e.target.checked)}
+            value={String(withPriority)}
+            onChange={(e) => setWithPriority(e.target.checked)}
           />
           <label htmlFor="priority" className="font-medium">
-            Want to yo give your order priority?
+            Want to you give your order priority?
           </label>
         </div>
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <Button disabled={isSubmitting} type="primary">
-            {isSubmitting ? 'Placing order....' : 'Order now'}
+          <Button disabled={isSubmitting || isAddressStatus} type="primary">
+            {isSubmitting ? 'Placing order....' : `Order now ${formatCurrency(totalPrice)}`}
           </Button>
         </div>
       </Form>
@@ -110,7 +112,7 @@ export const action = async ({request}:any) => {
   const order:any = {
     ...data,
     cart : JSON.parse(data.cart),
-    priority: data.priority === "on"
+    priority: data.priority === "true"
   }
   console.log(order);
   const errors:any = {};

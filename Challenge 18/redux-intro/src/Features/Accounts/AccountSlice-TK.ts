@@ -25,10 +25,8 @@ const accountSlice = createSlice({
                     payload:{loanAmount,loanPurpose}
                 }
             },
-
             reducer(state,action){
                 state.balance += action.payload.loanAmount;
-                console.log(state.balance);
                 state.loanPurpose = action.payload.loanPurpose;
             }
         },

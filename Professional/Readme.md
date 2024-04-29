@@ -39,3 +39,5 @@
 ```javascript
 className="text-xl" => className="text-[4rem]" //Escape Hatch or Arbitrary values
 ```
+
+> We could not use `Async` funtions in Redux, but with `thunk` we could able to do this, it acts as a **middleware**.

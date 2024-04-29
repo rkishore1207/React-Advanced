@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../components/Button';
 import CartItemModel from '../../models/CartItem';
 import {formatCurrency} from '../../utils/helpers';
 import { addCart } from '../cart/cartSlice';
+import DeleteItem from '../../components/DeleteItem';
+import UpdateCartItem from '../../components/updateCartItem';
 
 interface MenuItemProps{
   pizza:any
@@ -25,6 +27,11 @@ function MenuItem({ pizza }:MenuItemProps) {
     dispatch(addCart(pizza));
     console.log("add to cart");
   }
+
+  const {cart} = useSelector((state:any)=>state.cart);
+
+  const isPresentCart = cart.some((item:CartItemModel)=>item.pizzaId === id);
+  const currentPizza : CartItemModel = cart.find((cart:CartItemModel)=>cart.pizzaId === id);
 
   return (
     <li className="flex gap-4 py-2">
@@ -47,9 +54,13 @@ function MenuItem({ pizza }:MenuItemProps) {
             </p>
           )}
           {
-            !soldOut ? 
-              <Button type="small" onClick={handleAddToCart}>Add to cart</Button> :
-              ''
+            isPresentCart ? <>
+              <UpdateCartItem pizzaId={id} quantity={currentPizza.quantity}/>
+              <DeleteItem pizzaId={id}/>
+            </>
+             : !soldOut ? 
+            <Button type="small" onClick={handleAddToCart}>Add to cart</Button> :
+            ''
           }
         </div>
       </div>
