@@ -1,4 +1,4 @@
-import { accountReducer } from "./Features/Accounts/AccountSlice";
+import { accountReducer } from "./Features/Accounts/AccountSlice-TK";
 import { customerReducer } from "./Features/Customers/CustomerSlice";
 import { configureStore } from "@reduxjs/toolkit";
 
@@ -13,4 +13,4 @@ const store = configureStore({
 export default store;
 
 
-// export type ReduxState = ReturnType< typeof >;
+//export type ReduxState = ReturnType< typeof >;
