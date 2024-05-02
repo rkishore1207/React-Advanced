@@ -2,7 +2,7 @@
 import { css } from "styled-components";
 import styled from "styled-components";
 
-export const sizes = {
+const sizes:any = {
   small: css`
     font-size: 1.2rem;
     padding: 0.4rem 0.8rem;
@@ -22,7 +22,7 @@ export const sizes = {
   `,
 };
 
-export const variations = {
+const variations : any = {
   primary: css`
     color: var(--color-brand-50);
     background-color: var(--color-brand-600);
@@ -50,17 +50,27 @@ export const variations = {
   `,
 };
 
-export const ButtonApp = styled.button`
+interface ButtonAppProps{
+  size?:string,
+  variation?:string
+}
+
+export const ButtonApp = styled.button<ButtonAppProps>`
   padding: 0.5rem;
   border-radius: 0.25rem;
   border:none;
   cursor: pointer;
   color:var(--color-brand-50);
-  background-color: var(--color-brand-500);
-  &:hover{
-    background-color: var(--color-brand-600);
-  }
+
+  ${props => props.size && sizes[props.size]}
+  ${props => props.variation && variations[props.variation]}
+
 `;
+
+ButtonApp.defaultProps = {
+  size:"medium",
+  variation:"primary"
+}
 
 interface ButtonProps{
   variation:string,

@@ -41,3 +41,35 @@ className="text-xl" => className="text-[4rem]" //Escape Hatch or Arbitrary value
 ```
 
 > We could not use `Async` funtions in Redux, but with `thunk` we could able to do this, it acts as a **middleware**.
+
+## Styled Components
+
+* For styled components, need to install `VsCodeStyleComponents` extension.
+
+```javascript
+// Reusable Styled components
+const Heading = styled.h1`
+  ${props => props.as === "h1" && css`
+    font-size: 4rem;
+  `}
+
+  ${props => props.as === "h2" && css`
+    font-size: 2rem;
+  `}
+
+  ${props => props.as === "h3" && css`
+    font-size: 2rem;
+    font-weight: 300px;
+  `}
+
+  margin-left: 10px;
+`;
+// Html
+<Heading as={'h1'}>Hello World!</Heading>
+<Heading as={'h2'}>Check In</Heading>
+<Heading as={'h3'}>Check Out</Heading>
+
+export default Heading;
+```
+
+* If we want to use some styles for global use `createGlobalStyle` method and place this component in sibling to all components.
