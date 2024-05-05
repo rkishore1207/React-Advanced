@@ -73,3 +73,5 @@ export default Heading;
 ```
 
 * If we want to use some styles for global use `createGlobalStyle` method and place this component in sibling to all components.
+
+> **Supabase** => The Wild Oasis Password - `Rvr1170XwiBbVY7C`
