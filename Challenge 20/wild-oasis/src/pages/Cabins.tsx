@@ -1,23 +1,32 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react";
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
 import { getCabins } from "../services/apiCabins";
+import { useQuery } from "@tanstack/react-query";
+import Spinner from "../ui/Spinner";
+import CabinTable from "../features/cabins/CabinTable";
 
 function Cabins() {
 
-  const [cabin,setCabin] = useState<any>({});
+  const {isLoading,data:cabins,error} = useQuery({
+    queryKey:['cabins'],
+    queryFn:getCabins
+  });
 
-  useEffect(()=>{
-    getCabins().then((data:any)=>setCabin(data));
-  },[]);
+  if(isLoading) return <Spinner/>;
+
+  if(error) return null;
+
 
   return (
-    <Row type="horizontal">
-      <Heading as="h1">All cabins</Heading>
-      <p>{cabin.Image}</p>
-      {/* <img src={require(`${cabin.Image}`)}/> */}
-    </Row>
+    <>
+      <Row type="horizontal">
+        <Heading as="h1">All cabins</Heading>
+      </Row>
+      <Row>
+        <CabinTable cabins={cabins}/>
+      </Row>
+    </>
   );
 }
 

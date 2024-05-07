@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from "styled-components";
 
 const TableRow = styled.div`
@@ -38,3 +39,24 @@ const Discount = styled.div`
   font-weight: 500;
   color: var(--color-green-700);
 `;
+
+interface CabinRowProps{
+  cabin:any,
+}
+
+function CabinRow({cabin}:CabinRowProps) {
+
+  const {Name:name,MaxCapacity:maxCapacity,RegularPrice:regularPrice,Discount:discount,Image:image} = cabin;
+
+  return (
+    <TableRow role="row">
+      <Img src={image}/>
+      <Cabin>{maxCapacity}</Cabin>
+      <div>{name}</div>
+      <Price>{regularPrice}</Price>
+      <Discount>{discount}</Discount>
+    </TableRow>
+  );
+}
+
+export default CabinRow;

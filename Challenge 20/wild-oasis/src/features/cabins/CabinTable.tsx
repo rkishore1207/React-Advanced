@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from "styled-components";
+import CabinRow from "./CabinRow";
 
 const Table = styled.div`
   border: 1px solid var(--color-grey-200);
@@ -23,3 +25,26 @@ const TableHeader = styled.header`
   color: var(--color-grey-600);
   padding: 1.6rem 2.4rem;
 `;
+
+
+interface CabinTableProps{
+  cabins:any,
+}
+
+function CabinTable({cabins}:CabinTableProps) {
+  console.log(cabins);
+  return (
+    <Table>
+      <TableHeader>
+        <div>Image</div>
+        <div>Name</div>
+        <div>Price</div>
+        <div>Discount</div>
+        <div>MaxCapacity</div>
+      </TableHeader>
+      {cabins.map((item:any)=> <CabinRow cabin={item}/>)}
+    </Table>
+  );
+}
+
+export default CabinTable;
