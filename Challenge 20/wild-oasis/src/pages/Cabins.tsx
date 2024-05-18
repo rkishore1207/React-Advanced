@@ -5,6 +5,9 @@ import { getCabins } from "../services/apiCabins";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../ui/Spinner";
 import CabinTable from "../features/cabins/CabinTable";
+import { useState } from "react";
+import { ButtonApp } from "../ui/Button";
+import CreateCabinForm from "../features/cabins/CreateCabinForm";
 
 function Cabins() {
 
@@ -12,6 +15,8 @@ function Cabins() {
     queryKey:['cabins'],
     queryFn:getCabins
   });
+
+  const [showForm,setShowForm] = useState<boolean>(false);
 
   if(isLoading) return <Spinner/>;
 
@@ -25,6 +30,14 @@ function Cabins() {
       </Row>
       <Row>
         <CabinTable cabins={cabins}/>
+      </Row>
+      <Row>
+        <ButtonApp onClick={()=>setShowForm((showForm:boolean) => !showForm)}>Add Cabin</ButtonApp>
+      </Row>
+      <Row>
+        {
+          showForm && <CreateCabinForm/>
+        }
       </Row>
     </>
   );

@@ -38,9 +38,9 @@ function CabinTable({cabins}:CabinTableProps) {
       <TableHeader>
         <div>Image</div>
         <div>Name</div>
+        <div>MaxCapacity</div>
         <div>Price</div>
         <div>Discount</div>
-        <div>MaxCapacity</div>
       </TableHeader>
       {cabins.map((item:any)=> <CabinRow cabin={item}/>)}
     </Table>

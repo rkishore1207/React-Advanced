@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-/*
 import { formatDistance, parseISO } from 'date-fns';
-import { differenceInDays } from 'date-fns/esm';
+import { differenceInDays } from 'date-fns/differenceInDays';
 
 // We want to make this function work for both Date objects and strings (which come from Supabase)
 export const subtractDates = (dateStr1 : any, dateStr2 : any) =>
@@ -26,10 +26,9 @@ export const getToday = function (options:any = {}) {
   return today.toISOString();
 };
 
-export const formatCurrency = (value:string) =>
+export const formatCurrency = (value:any) =>
   new Intl.NumberFormat('en', { style: 'currency', currency: 'USD' }).format(
     value
   );
-*/
 
 export default {};
