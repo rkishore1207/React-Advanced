@@ -14,6 +14,7 @@ const StyledMain = styled.main`
     padding: 1rem;
     background-color:var(--color-grey-200);
     height: 100vh;
+    overflow: scroll;
 `;
 
 function AppLayout() {

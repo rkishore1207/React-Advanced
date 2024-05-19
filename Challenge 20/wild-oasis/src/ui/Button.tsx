@@ -72,17 +72,17 @@ ButtonApp.defaultProps = {
   variation:"primary"
 }
 
-interface ButtonProps{
-  variation:string,
-  disabled:boolean,
-  children:any
-}
+// interface ButtonProps{
+//   variation:string,
+//   disabled:boolean,
+//   children:any
+// }
 
-function Button({variation,disabled=false,children}:ButtonProps) {
-  console.log(variation,disabled);
-  return (
-    <button>{children}</button>
-  );
-}
+// function Button({variation,disabled=false,children}:ButtonProps) {
+//   console.log(variation,disabled);
+//   return (
+//     <button>{children}</button>
+//   );
+// }
 
-export default Button;
+// export default Button;
