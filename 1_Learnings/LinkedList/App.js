@@ -1,4 +1,4 @@
-import { LinkedList } from "./LinkedList";
+import { LinkedList } from "./LinkedList.js";
 
 let linkedList = new LinkedList();
 linkedList.insertAtBeginning(10);
