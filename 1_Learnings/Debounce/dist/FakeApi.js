@@ -11,14 +11,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUsers = void 0;
 const faker_1 = require("@faker-js/faker");
-const users = Array(20).fill(0).map((_, index) => {
+const users = Array(50).fill(0).map((_, index) => {
     return ({
         id: index,
         name: faker_1.faker.person.fullName()
     });
 });
 const getUsers = (search) => __awaiter(void 0, void 0, void 0, function* () {
-    yield new Promise((resolve) => resolve("Resolved")).then();
+    // await new Promise((resolve) => resolve("Resolved"));
     const filteredUsers = users.filter((user) => user.name.toLowerCase().includes(search.toLowerCase()));
     return filteredUsers;
 });
